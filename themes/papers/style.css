@@ -1,0 +1,1025 @@
+/* ============================================================
+   «Бумажный стол»: тетрадные листы, закладки, стикеры, скотч, печать
+   ============================================================ */
+
+.cy-chat {
+  --pp-paper: #fbf5e1;
+  --pp-paper-2: #f3e9c8;
+  --pp-paper-3: #e6d8ac;
+  --pp-edge: #8b7650;
+  --pp-ink: #2a2118;
+  --pp-ink-soft: #5b4a33;
+  --pp-kraft: #cfa971;
+  --pp-kraft-2: #b98f56;
+  --pp-red: #c8412f;
+  --pp-red-dk: #8f2a1c;
+  --pp-blue: #1f4fa8;
+  --pp-rule: rgba(80, 125, 200, 0.3);
+  --pp-margin: rgba(214, 81, 63, 0.6);
+  --pp-sticky: #fff0a0;
+  --pp-sticky-dk: #e8c940;
+  --pp-tex-cream: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+  --pp-tex-fiber: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  --pp-tex-old: url("https://www.transparenttextures.com/patterns/old-map.png");
+  --pp-tex-note: url("https://www.transparenttextures.com/patterns/notebook.png");
+  --pp-hand: "Segoe Print", "Bradley Hand", "Marker Felt", "Comic Sans MS", "Comic Neue", cursive;
+  --pp-mono: "Courier New", Courier, "Lucida Console", monospace;
+  color: var(--pp-ink);
+}
+/* ============================================================
+   Личные сообщения: тот же бумажный стиль
+   ============================================================ */
+
+/* ---------- Строки сообщений: линованный лист с полями ---------- */
+.cy-chat [class^="dm-"] li,
+.cy-chat [class*=" dm-"] li {
+  background:
+    linear-gradient(90deg, transparent 13px, var(--pp-margin) 13px 14px, transparent 14px),
+    repeating-linear-gradient(180deg, transparent 0 calc(1.95em - 1px), var(--pp-rule) calc(1.95em - 1px) 1.95em),
+    transparent;
+  color: var(--pp-ink);
+  text-shadow:
+    -0.5px 0 0 var(--pp-ink),
+    0.5px 0 0 var(--pp-ink),
+    0 -0.5px 0 var(--pp-ink),
+    0 0.5px 0 var(--pp-ink);
+  box-shadow: inset 0 -1px 0 rgba(139, 118, 80, 0.25);
+}
+
+.cy-chat [class^="dm-"] li:nth-child(even),
+.cy-chat [class*=" dm-"] li:nth-child(even) {
+  background:
+    linear-gradient(90deg, transparent 13px, var(--pp-margin) 13px 14px, transparent 14px),
+    repeating-linear-gradient(180deg, transparent 0 calc(1.95em - 1px), var(--pp-rule) calc(1.95em - 1px) 1.95em),
+    rgba(243, 233, 200, 0.55);
+}
+
+.cy-chat [class^="dm-"] li:hover,
+.cy-chat [class*=" dm-"] li:hover {
+  box-shadow:
+    inset 4px 0 0 #f4a3b5,
+    inset 0 -1px 0 rgba(139, 118, 80, 0.25);
+}
+
+.cy-chat [class^="dm-"] p,
+.cy-chat [class*=" dm-"] p {
+  color: var(--pp-ink);
+}
+
+/* ---------- Имя собеседника в шапке ---------- */
+.cy-chat [class^="dm-"] h1,
+.cy-chat [class*=" dm-"] h1,
+.cy-chat [class^="dm-"] h2,
+.cy-chat [class*=" dm-"] h2,
+.cy-chat [class^="dm-"] h3,
+.cy-chat [class*=" dm-"] h3,
+.cy-chat [class^="dm-"] h4,
+.cy-chat [class*=" dm-"] h4,
+.cy-chat [class^="dm-"] strong,
+.cy-chat [class*=" dm-"] strong {
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Кнопки лички: чип диалога, «Пожаловаться», «Заблокировать» ---------- */
+.cy-chat [class^="dm-"] button,
+.cy-chat [class*=" dm-"] button {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)),
+    var(--pp-tex-cream),
+    var(--pp-paper);
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  text-shadow: none;
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 2px 0 var(--pp-edge),
+    0 3px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: filter 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.cy-chat [class^="dm-"] button:hover,
+.cy-chat [class*=" dm-"] button:hover {
+  filter: brightness(1.04) saturate(1.1);
+  color: var(--pp-red-dk);
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 2px 0 var(--pp-edge),
+    0 5px 9px rgba(0, 0, 0, 0.35);
+}
+
+.cy-chat [class^="dm-"] button:active,
+.cy-chat [class*=" dm-"] button:active {
+  filter: brightness(0.92);
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    inset 0 2px 4px rgba(60, 40, 15, 0.35);
+}
+
+.cy-chat [class^="dm-"] button:focus-visible,
+.cy-chat [class*=" dm-"] button:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+}
+
+.cy-chat [class^="dm-"] button:disabled,
+.cy-chat [class*=" dm-"] button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+/* ---------- Скроллбар лички ---------- */
+.cy-chat [class^="dm-"],
+.cy-chat [class*=" dm-"] {
+  scrollbar-width: thin;
+  scrollbar-color: #e9a2a2 var(--pp-paper-2);
+}
+
+.cy-chat [class^="dm-"]::-webkit-scrollbar,
+.cy-chat [class*=" dm-"]::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+.cy-chat [class^="dm-"]::-webkit-scrollbar-track,
+.cy-chat [class*=" dm-"]::-webkit-scrollbar-track {
+  background:
+    repeating-linear-gradient(180deg, rgba(139, 118, 80, 0.2) 0 2px, transparent 2px 10px),
+    var(--pp-paper-2);
+}
+
+.cy-chat [class^="dm-"]::-webkit-scrollbar-thumb,
+.cy-chat [class*=" dm-"]::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #f4b3b3, #e58f8f);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 1px rgba(143, 42, 28, 0.55),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Форма отправки в личке ---------- */
+.cy-chat form {
+  background:
+    repeating-linear-gradient(90deg, rgba(60, 40, 15, 0.55) 0 5px, transparent 5px 12px) left top / 100% 2px no-repeat,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.08)),
+    var(--pp-tex-old),
+    var(--pp-kraft);
+}
+
+.cy-chat form input[type="text"] {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 calc(1.7em - 1px), rgba(80, 125, 200, 0.3) calc(1.7em - 1px) 1.7em),
+    var(--pp-tex-cream),
+    #fffdf2;
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  caret-color: var(--pp-red);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 2px 4px rgba(60, 40, 15, 0.25),
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.cy-chat form input[type="text"]::placeholder {
+  color: #8b7650;
+  opacity: 1;
+  font-style: italic;
+}
+
+.cy-chat form input[type="text"]:hover {
+  filter: brightness(1.03);
+}
+
+.cy-chat form input[type="text"]:focus,
+.cy-chat form input[type="text"]:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+  box-shadow:
+    inset 0 2px 4px rgba(60, 40, 15, 0.2),
+    0 0 0 1px rgba(60, 40, 15, 0.8),
+    0 0 12px rgba(255, 210, 60, 0.6);
+}
+
+.cy-chat form input[type="text"]:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+/* ---------- Отправка в личке: красная штамп-печать ---------- */
+.cy-chat form button[type="submit"] {
+  background: #fffdf2;
+  color: var(--pp-red);
+  font-weight: 800;
+  box-shadow:
+    0 0 0 2px var(--pp-red),
+    inset 0 0 0 2px #fffdf2,
+    inset 0 0 0 3px var(--pp-red),
+    0 3px 0 var(--pp-red-dk),
+    0 5px 8px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cy-chat form button[type="submit"]:hover {
+  background: var(--pp-red);
+  color: #fffdf2;
+  box-shadow:
+    0 0 0 2px var(--pp-red),
+    inset 0 0 0 2px var(--pp-red),
+    inset 0 0 0 3px #fffdf2,
+    0 3px 0 var(--pp-red-dk),
+    0 6px 10px rgba(0, 0, 0, 0.45);
+}
+
+.cy-chat form button[type="submit"]:active {
+  background: var(--pp-red-dk);
+  color: #fffdf2;
+  box-shadow:
+    0 0 0 2px var(--pp-red-dk),
+    inset 0 0 0 2px var(--pp-red-dk),
+    inset 0 0 0 3px #fffdf2,
+    inset 0 3px 6px rgba(0, 0, 0, 0.45);
+}
+
+.cy-chat form button[type="submit"]:focus-visible {
+  outline: 2px dashed var(--pp-ink);
+  outline-offset: 3px;
+}
+
+.cy-chat form button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.7);
+  box-shadow:
+    0 0 0 2px #a99b7a,
+    inset 0 0 0 2px #fffdf2,
+    inset 0 0 0 3px #a99b7a;
+}
+
+/* ---------- 7TV / imgBB / «Пасты» в личке (внешние host-элементы) ---------- */
+.cy-chat span[class$="-chat-buttons"] > span:not([hidden]) {
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 2px #fffdf2,
+    0 0 0 3px rgba(60, 40, 15, 0.75),
+    0 3px 5px rgba(0, 0, 0, 0.4);
+  filter: hue-rotate(-80deg) saturate(0.9) sepia(0.1);
+  transition: filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cy-chat span[class$="-chat-buttons"] > span:not([hidden]):hover {
+  filter: hue-rotate(-80deg) saturate(1) sepia(0.1) brightness(1.1);
+  box-shadow:
+    0 0 0 2px #ffe27a,
+    0 0 0 3px rgba(60, 40, 15, 0.75),
+    0 5px 9px rgba(0, 0, 0, 0.45);
+}
+
+.cy-chat span[class$="-chat-buttons"] > span:not([hidden]):active {
+  filter: hue-rotate(-80deg) saturate(0.9) sepia(0.1) brightness(0.88);
+  box-shadow:
+    0 0 0 2px #e6d8ac,
+    0 0 0 3px rgba(60, 40, 15, 0.75);
+}
+
+.cy-chat span[class$="-chat-buttons"] > span:not([hidden]):focus-within {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 3px;
+}
+
+/* ---------- Узкое окно и уменьшение движения ---------- */
+@media (max-width: 480px) {
+  .cy-chat [class^="dm-"] li,
+  .cy-chat [class*=" dm-"] li {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-chat [class^="dm-"] button,
+  .cy-chat [class*=" dm-"] button,
+  .cy-chat form input[type="text"],
+  .cy-chat form button[type="submit"],
+  .cy-chat span[class$="-chat-buttons"] > span:not([hidden]) {
+    transition: none;
+  }
+}
+
+/* ---------- Панель: стопка листов ---------- */
+.cy-chat .cy-chat-b {
+  background:
+    var(--pp-tex-cream),
+    var(--pp-paper);
+  border-radius: 5px;
+  box-shadow:
+    0 0 0 1px var(--pp-edge),
+    3px 3px 0 0 #f3e8c8,
+    3px 3px 0 1px var(--pp-edge),
+    6px 6px 0 0 #eadfbd,
+    6px 6px 0 1px var(--pp-edge),
+    9px 9px 0 0 #dfd2ac,
+    9px 9px 0 1px var(--pp-edge),
+    0 18px 28px rgba(0, 0, 0, 0.45);
+  color: var(--pp-ink);
+}
+
+.cy-chat .cy-chat-w {
+  background: transparent;
+  color: var(--pp-ink);
+}
+
+/* ---------- Заголовок: картон со скотчем ---------- */
+.cy-chat .cy-chat-h {
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 150, 175, 0.85) 0 6px, rgba(255, 235, 240, 0.85) 6px 12px) left top / 58px 15px no-repeat,
+    repeating-linear-gradient(45deg, rgba(120, 205, 175, 0.85) 0 6px, rgba(235, 255, 245, 0.85) 6px 12px) right top / 58px 15px no-repeat,
+    repeating-linear-gradient(90deg, rgba(60, 40, 15, 0.55) 0 5px, transparent 5px 12px) left bottom / 100% 2px no-repeat,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0.08)),
+    var(--pp-tex-old),
+    var(--pp-kraft);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(60, 40, 15, 0.45);
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.cy-chat [class*="-mention"] {
+  --pp-mention-ink: #5a0b24;
+  background: linear-gradient(transparent 40%, rgba(255, 196, 70, 0.75) 40%);
+  color: var(--pp-mention-ink) !important;
+  font-weight: 800;
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: none !important;
+}
+
+.cy-chat [class*="-mention"] * {
+  color: var(--pp-mention-ink) !important;
+  text-shadow: none !important;
+}
+/* ---------- Вкладки: цветные закладки ---------- */
+.cy-chat .cy-chat-tabs button[role="tab"] {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.06)),
+    var(--pp-tex-cream),
+    #f7e6a0;
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 700;
+  border-radius: 8px 8px 0 0;
+  box-shadow:
+    inset 0 -3px 4px rgba(60, 40, 15, 0.22),
+    0 0 0 1px rgba(60, 40, 15, 0.6);
+  text-shadow: none;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-of-type(5n + 1) { background-color: #f6b8c4; }
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-of-type(5n + 2) { background-color: #b9e4c9; }
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-of-type(5n + 3) { background-color: #b8d8f0; }
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-of-type(5n + 4) { background-color: #f7e6a0; }
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-of-type(5n + 5) { background-color: #f8cfa6; }
+
+.cy-chat .cy-chat-tabs button[role="tab"]:hover {
+  filter: brightness(1.07) saturate(1.1);
+}
+
+.cy-chat .cy-chat-tabs button[role="tab"]:active {
+  filter: brightness(0.93);
+}
+
+.cy-chat .cy-chat-tabs button[role="tab"]:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: -3px;
+}
+
+.cy-chat .cy-chat-tabs button[role="tab"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.7);
+}
+
+.cy-chat .cy-chat-tabs button[role="tab"][aria-selected="true"]:nth-of-type(n) {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)),
+    var(--pp-tex-cream),
+    #fffdf2;
+  color: var(--pp-ink);
+  filter: none;
+  box-shadow:
+    inset 0 4px 0 var(--pp-red),
+    inset 0 -1px 0 rgba(60, 40, 15, 0.15),
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 -2px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- Счётчики новых сообщений: красные печати ---------- */
+.cy-chat .cy-chat-tn,
+.cy-chat .cy-chat-n {
+  background: radial-gradient(circle at 35% 30%, #ef6a55, var(--pp-red) 65%, var(--pp-red-dk));
+  color: #fff6e6;
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  box-shadow:
+    0 0 0 2px #fffdf2,
+    0 0 0 3px rgba(60, 40, 15, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Сворачивание и кнопки заголовка: бумажные наклейки ---------- */
+.cy-chat .cy-chat-t,
+.cy-chat .cy-chat-sh,
+.cy-chat .cy-chat-x {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)),
+    var(--pp-tex-cream),
+    var(--pp-paper);
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 2px 0 var(--pp-edge),
+    0 3px 5px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cy-chat .cy-chat-t:hover,
+.cy-chat .cy-chat-sh:hover,
+.cy-chat .cy-chat-x:hover {
+  filter: brightness(1.04) saturate(1.1);
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 2px 0 var(--pp-edge),
+    0 5px 9px rgba(0, 0, 0, 0.4);
+}
+
+.cy-chat .cy-chat-t:active,
+.cy-chat .cy-chat-sh:active,
+.cy-chat .cy-chat-x:active {
+  filter: brightness(0.92);
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    inset 0 2px 4px rgba(60, 40, 15, 0.35);
+}
+
+.cy-chat .cy-chat-t:focus-visible,
+.cy-chat .cy-chat-sh:focus-visible,
+.cy-chat .cy-chat-x:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+}
+
+.cy-chat .cy-chat-t:disabled,
+.cy-chat .cy-chat-sh:disabled,
+.cy-chat .cy-chat-x:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+.cy-chat .cy-chat-x:hover {
+  color: var(--pp-red);
+}
+
+/* ---------- Статусные области: записки ---------- */
+.cy-chat .cy-chat-p,
+.cy-chat .cy-chat-to,
+.cy-chat .cy-chat-e {
+  background:
+    var(--pp-tex-note),
+    var(--pp-paper-2);
+  color: var(--pp-ink-soft);
+  font-family: var(--pp-hand);
+  box-shadow: inset 0 0 0 1px rgba(139, 118, 80, 0.5);
+}
+
+.cy-chat .cy-chat-e {
+  color: var(--pp-red-dk);
+}
+
+/* ---------- Лента: тетрадный лист ---------- */
+.cy-chat .cy-chat-l {
+  background:
+    linear-gradient(135deg, var(--pp-kraft-2) 0 50%, #fffdf2 50% 100%) left top / 20px 20px no-repeat,
+    var(--pp-tex-cream),
+    var(--pp-paper);
+  scrollbar-width: thin;
+  scrollbar-color: #e9a2a2 var(--pp-paper-2);
+}
+
+.cy-chat .cy-chat-l::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+.cy-chat .cy-chat-l::-webkit-scrollbar-track {
+  background:
+    repeating-linear-gradient(180deg, rgba(139, 118, 80, 0.2) 0 2px, transparent 2px 10px),
+    var(--pp-paper-2);
+  box-shadow: inset 1px 0 0 rgba(139, 118, 80, 0.5);
+}
+
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #f4b3b3, #e58f8f);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 1px rgba(143, 42, 28, 0.55),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #f8c2c2, #ee9c9c);
+}
+
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(90deg, #e58f8f, var(--pp-red));
+}
+
+.cy-chat .cy-chat-l > li {
+  background:
+    linear-gradient(90deg, transparent 13px, var(--pp-margin) 13px 14px, transparent 14px),
+    repeating-linear-gradient(180deg, transparent 0 calc(1.95em - 1px), var(--pp-rule) calc(1.95em - 1px) 1.95em),
+    transparent;
+  color: var(--pp-ink);
+  text-shadow:
+    -0.5px 0 0 var(--pp-ink),
+    0.5px 0 0 var(--pp-ink),
+    0 -0.5px 0 var(--pp-ink),
+    0 0.5px 0 var(--pp-ink);
+  box-shadow: inset 0 -1px 0 rgba(139, 118, 80, 0.25);
+  animation: pprs-slip-in 0.22s ease-out both;
+}
+
+.cy-chat .cy-chat-l > li:nth-child(even) {
+  background:
+    linear-gradient(90deg, transparent 13px, var(--pp-margin) 13px 14px, transparent 14px),
+    repeating-linear-gradient(180deg, transparent 0 calc(1.95em - 1px), var(--pp-rule) calc(1.95em - 1px) 1.95em),
+    rgba(243, 233, 200, 0.55);
+}
+
+.cy-chat .cy-chat-l > li:hover {
+  box-shadow:
+    inset 4px 0 0 #f4a3b5,
+    inset 0 -1px 0 rgba(139, 118, 80, 0.25);
+}
+
+/* ---------- Теги гильдий: машинописный штамп ---------- */
+.cy-chat .cy-gt {
+  color: #7a2e1f !important;
+  font-family: var(--pp-mono);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-shadow: none;
+}
+
+.cy-chat .cy-gt * {
+  color: #7a2e1f !important;
+  text-shadow: none;
+}
+
+/* ---------- Ссылки и превью ---------- */
+.cy-chat .cy-chat-l a {
+  color: var(--pp-blue);
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+  transition: background-color 0.15s ease;
+}
+
+.cy-chat .cy-chat-l a:hover {
+  background-color: #fff08a;
+  text-decoration-style: solid;
+}
+
+.cy-chat .cy-chat-l a:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+}
+
+.cy-chat .cy-chat-l a img {
+  outline: 4px solid #fffdf2;
+  outline-offset: 0;
+  box-shadow: 0 0 0 5px rgba(139, 118, 80, 0.5), 0 4px 9px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Пинги: жёлтые стикеры с булавкой ---------- */
+.cy-chat .cy-chat-l > li[class*="-ping"],
+.cy-chat .cy-chat-l > li.ping {
+  background:
+    radial-gradient(circle at 50% 40%, #ff8a78 0 2.5px, var(--pp-red) 3.5px 5px, transparent 6px) right 8px top 3px / 14px 14px no-repeat,
+    linear-gradient(315deg, rgba(140, 110, 20, 0.45) 0 50%, rgba(0, 0, 0, 0) 50%) right bottom / 14px 14px no-repeat,
+    repeating-linear-gradient(180deg, transparent 0 calc(1.95em - 1px), rgba(160, 125, 20, 0.22) calc(1.95em - 1px) 1.95em),
+    var(--pp-tex-cream),
+    var(--pp-sticky);
+  color: var(--pp-ink);
+  box-shadow:
+    inset 5px 0 0 var(--pp-sticky-dk),
+    inset 0 0 0 1px rgba(160, 125, 20, 0.45),
+    0 3px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+.cy-chat .cy-chat-l > li[class*="-ping"]:hover,
+.cy-chat .cy-chat-l > li.ping:hover {
+  box-shadow:
+    inset 5px 0 0 #ffd400,
+    inset 0 0 0 1px rgba(160, 125, 20, 0.6),
+    0 5px 10px rgba(0, 0, 0, 0.35);
+}
+
+.cy-chat [class*="-mention"] {
+  background: linear-gradient(transparent 45%, rgba(255, 110, 150, 0.55) 45%);
+  color: #7a1330;
+  font-weight: 700;
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: none;
+}
+
+.cy-chat [class$="-chat-tp"],
+.cy-chat [class$="-chat-pn"] {
+  background: radial-gradient(circle at 35% 30%, #fff39a, var(--pp-sticky-dk) 70%);
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow:
+    0 0 0 2px rgba(60, 40, 15, 0.75),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Фильтр пингов и навигация ---------- */
+.cy-chat [class$="-chat-filter"] {
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+}
+
+.cy-chat [class$="-chat-filter"]:hover {
+  color: var(--pp-red-dk);
+}
+
+.cy-chat [class$="-chat-filter"] input[type="checkbox"] {
+  accent-color: var(--pp-red);
+  cursor: pointer;
+}
+
+.cy-chat [class$="-chat-filter"] input[type="checkbox"]:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+}
+
+.cy-chat [class$="-chat-filter"] input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cy-chat [class$="-ping-nav"] {
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+}
+
+.cy-chat [class$="-ping-nav"] button,
+.cy-chat [class$="-ping-nav"] [role="button"] {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)),
+    var(--pp-tex-cream),
+    var(--pp-sticky);
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  border-radius: 3px;
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 2px 0 #b99a1c,
+    0 3px 5px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.cy-chat [class$="-ping-nav"] button:hover,
+.cy-chat [class$="-ping-nav"] [role="button"]:hover {
+  filter: brightness(1.06) saturate(1.1);
+}
+
+.cy-chat [class$="-ping-nav"] button:active,
+.cy-chat [class$="-ping-nav"] [role="button"]:active {
+  filter: brightness(0.92);
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    inset 0 2px 4px rgba(60, 40, 15, 0.35);
+}
+
+.cy-chat [class$="-ping-nav"] button:focus-visible,
+.cy-chat [class$="-ping-nav"] [role="button"]:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+}
+
+.cy-chat [class$="-ping-nav"] button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+/* ---------- Форма отправки: бланк на картоне ---------- */
+.cy-chat form.cy-chat-f {
+  background:
+    repeating-linear-gradient(90deg, rgba(60, 40, 15, 0.55) 0 5px, transparent 5px 12px) left top / 100% 2px no-repeat,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.08)),
+    var(--pp-tex-old),
+    var(--pp-kraft);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(60, 40, 15, 0.4);
+}
+
+.cy-chat form.cy-chat-f input[type="text"] {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 calc(1.7em - 1px), rgba(80, 125, 200, 0.3) calc(1.7em - 1px) 1.7em),
+    var(--pp-tex-cream),
+    #fffdf2;
+  color: var(--pp-ink);
+  font-family: var(--pp-hand);
+  caret-color: var(--pp-red);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 2px 4px rgba(60, 40, 15, 0.25),
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.cy-chat form.cy-chat-f input[type="text"]::placeholder {
+  color: #8b7650;
+  opacity: 1;
+  font-style: italic;
+}
+
+.cy-chat form.cy-chat-f input[type="text"]:hover {
+  filter: brightness(1.03);
+}
+
+.cy-chat form.cy-chat-f input[type="text"]:focus,
+.cy-chat form.cy-chat-f input[type="text"]:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+  box-shadow:
+    inset 0 2px 4px rgba(60, 40, 15, 0.2),
+    0 0 0 1px rgba(60, 40, 15, 0.8),
+    0 0 12px rgba(255, 210, 60, 0.6);
+}
+
+.cy-chat form.cy-chat-f input[type="text"]:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+/* ---------- Отправка: резиновая штамп-печать ---------- */
+.cy-chat form.cy-chat-f button[type="submit"] {
+  background: #fffdf2;
+  color: var(--pp-red);
+  font-weight: 800;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px var(--pp-red),
+    inset 0 0 0 2px #fffdf2,
+    inset 0 0 0 3px var(--pp-red),
+    0 3px 0 var(--pp-red-dk),
+    0 5px 8px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cy-chat form.cy-chat-f button[type="submit"]:hover {
+  background: var(--pp-red);
+  color: #fffdf2;
+  box-shadow:
+    0 0 0 2px var(--pp-red),
+    inset 0 0 0 2px var(--pp-red),
+    inset 0 0 0 3px #fffdf2,
+    0 3px 0 var(--pp-red-dk),
+    0 6px 10px rgba(0, 0, 0, 0.45);
+}
+
+.cy-chat form.cy-chat-f button[type="submit"]:active {
+  background: var(--pp-red-dk);
+  color: #fffdf2;
+  box-shadow:
+    0 0 0 2px var(--pp-red-dk),
+    inset 0 0 0 2px var(--pp-red-dk),
+    inset 0 0 0 3px #fffdf2,
+    inset 0 3px 6px rgba(0, 0, 0, 0.45);
+}
+
+.cy-chat form.cy-chat-f button[type="submit"]:focus-visible {
+  outline: 2px dashed var(--pp-ink);
+  outline-offset: 3px;
+}
+
+.cy-chat form.cy-chat-f button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.7);
+  box-shadow:
+    0 0 0 2px #a99b7a,
+    inset 0 0 0 2px #fffdf2,
+    inset 0 0 0 3px #a99b7a;
+}
+
+/* ---------- Смайлы и апелляция ---------- */
+.cy-chat .cy-emo-b {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)),
+    var(--pp-tex-cream),
+    var(--pp-paper);
+  color: var(--pp-ink);
+  border-radius: 5px;
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 2px 0 var(--pp-edge),
+    0 3px 5px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.cy-chat .cy-emo-b:hover {
+  filter: brightness(1.04) saturate(1.1);
+}
+
+.cy-chat .cy-emo-b:active {
+  filter: brightness(0.92);
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    inset 0 2px 4px rgba(60, 40, 15, 0.35);
+}
+
+.cy-chat .cy-emo-b:focus-visible {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 2px;
+}
+
+.cy-chat .cy-emo-b:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+.cy-chat .cy-chat-ap {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.08)),
+    var(--pp-tex-cream),
+    #e86a55;
+  color: #fffdf2;
+  font-family: var(--pp-hand);
+  font-weight: 800;
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    0 0 0 3px rgba(200, 65, 47, 0.35),
+    0 2px 0 var(--pp-red-dk),
+    0 3px 5px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.cy-chat .cy-chat-ap:hover {
+  filter: brightness(1.1);
+}
+
+.cy-chat .cy-chat-ap:active {
+  filter: brightness(0.88);
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 15, 0.7),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.cy-chat .cy-chat-ap:focus-visible {
+  outline: 2px dashed var(--pp-ink);
+  outline-offset: 2px;
+}
+
+.cy-chat .cy-chat-ap:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+/* ---------- 7TV / imgBB / «Пасты» (только внешние host-элементы) ---------- */
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]) {
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 2px #fffdf2,
+    0 0 0 3px rgba(60, 40, 15, 0.75),
+    0 3px 5px rgba(0, 0, 0, 0.4);
+  filter: hue-rotate(-80deg) saturate(0.9) sepia(0.1);
+  transition: filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):hover {
+  filter: hue-rotate(-80deg) saturate(1) sepia(0.1) brightness(1.1);
+  box-shadow:
+    0 0 0 2px #ffe27a,
+    0 0 0 3px rgba(60, 40, 15, 0.75),
+    0 5px 9px rgba(0, 0, 0, 0.45);
+}
+
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):active {
+  filter: hue-rotate(-80deg) saturate(0.9) sepia(0.1) brightness(0.88);
+  box-shadow:
+    0 0 0 2px #e6d8ac,
+    0 0 0 3px rgba(60, 40, 15, 0.75);
+}
+
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):focus-within {
+  outline: 2px dashed var(--pp-red);
+  outline-offset: 3px;
+}
+
+/* ---------- Ручки изменения размера ---------- */
+.cy-chat .cy-chat-rz,
+.cy-chat .cy-chat-eg {
+  background: repeating-linear-gradient(135deg, rgba(139, 118, 80, 0.6) 0 2px, transparent 2px 5px);
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.cy-chat .cy-chat-rz:hover,
+.cy-chat .cy-chat-eg:hover {
+  opacity: 1;
+}
+
+/* ---------- Появление строк ---------- */
+@keyframes pprs-slip-in {
+  from {
+    opacity: 0.55;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Узкое окно ---------- */
+@media (max-width: 480px) {
+  .cy-chat .cy-chat-tabs button[role="tab"] {
+    font-size: 0.92em;
+  }
+
+  .cy-chat .cy-chat-b {
+    box-shadow:
+      0 0 0 1px var(--pp-edge),
+      2px 2px 0 0 #f3e8c8,
+      2px 2px 0 1px var(--pp-edge),
+      4px 4px 0 0 #eadfbd,
+      4px 4px 0 1px var(--pp-edge),
+      0 10px 18px rgba(0, 0, 0, 0.4);
+  }
+
+  .cy-chat .cy-chat-l > li {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ---------- Уменьшение движения ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cy-chat .cy-chat-l > li {
+    animation: none;
+  }
+
+  .cy-chat .cy-chat-tabs button[role="tab"],
+  .cy-chat .cy-chat-t,
+  .cy-chat .cy-chat-sh,
+  .cy-chat .cy-chat-x,
+  .cy-chat .cy-emo-b,
+  .cy-chat .cy-chat-ap,
+  .cy-chat form.cy-chat-f button[type="submit"],
+  .cy-chat form.cy-chat-f input[type="text"],
+  .cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]) {
+    transition: none;
+  }
+}
