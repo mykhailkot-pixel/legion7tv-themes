@@ -732,9 +732,9 @@ class ModeratorApp:
             return
 
         try:
-            self.status.set("Обновляю каталог, добавляю изменения и создаю commit...")
+            self.status.set("Обновляю timestamp, добавляю изменения и создаю commit...")
             self.root.update_idletasks()
-            self._increment_catalog_schema()
+            self._update_catalog_timestamp()
             self._run_git("add", ".")
             self._run_git("commit", "-m", f"#{issue_number}")
         except Exception as exc:
@@ -777,15 +777,8 @@ class ModeratorApp:
             raise ValueError("В catalog.json ожидается массив `themes`.")
         return catalog_path, catalog
 
-    def _increment_catalog_schema(self):
+    def _update_catalog_timestamp(self):
         catalog_path, catalog = self._read_catalog()
-        version = catalog.get("schemaVersion")
-        if isinstance(version, bool) or not isinstance(version, int) or version < 0:
-            raise ValueError(
-                "В catalog.json поле `schemaVersion` должно быть "
-                "неотрицательным целым числом."
-            )
-        catalog["schemaVersion"] = version + 1
         catalog["updatedAt"] = local_timestamp()
         content = (json.dumps(catalog, ensure_ascii=False, indent=2) + "\n").encode(
             "utf-8"
