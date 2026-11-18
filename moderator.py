@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 import tkinter as tk
 import webbrowser
-from datetime import date
+from datetime import datetime
 from io import BytesIO
 from pathlib import Path
 from tkinter import messagebox, ttk
@@ -96,6 +96,10 @@ def submission_key(row, status_column):
     submission = [value for index, value in enumerate(row) if index != status_column]
     serialized = json.dumps(submission, ensure_ascii=False, separators=(",", ":"))
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+
+def local_timestamp():
+    return datetime.now().astimezone().isoformat(timespec="seconds")
 
 
 def slug_from_url(value):
@@ -409,8 +413,8 @@ class ModeratorApp:
         item = self.submissions[index]
         if not messagebox.askyesno(
             "Отклонить заявку",
-            "Больше не показывать эту заявку в программе? "
-            "В облачной таблице строка останется без изменений.",
+            "Отклонить заявку и больше не показывать её в программе? "
+            "В таблице будет изменён только статус модерации.",
             parent=self.root,
         ):
             return
@@ -424,16 +428,38 @@ class ModeratorApp:
             )
             return
         self.rejected_submissions = rejected
+        review_status_error = None
+        try:
+            self._set_review_status(item["row"], "Отклонено — локально")
+        except Exception as exc:
+            review_status_error = exc
         self.submissions.pop(index)
         self.selected = None
         self.listbox.delete(index)
         self._set_text(self.details, "")
         self._set_text(self.css_view, "")
         self._set_preview(None, "Заявка отклонена и больше не будет показана.")
-        self.status.set(
-            f"Новых заявок: {len(self.submissions)} "
-            "(отклонённая заявка сохранена локально)"
-        )
+        if review_status_error:
+            self.status.set("Отклонено локально; статус в таблице не обновлён.")
+            messagebox.showwarning(
+                "Локально отклонено, статус не обновлён",
+                "Заявка скрыта в этой программе, но статус в Google Таблице "
+                "не удалось изменить. Обновите статус вручную или удалите её "
+                "запись из moderator_rejections.json, чтобы повторить попытку.\n\n"
+                f"Подробности: {review_status_error}",
+                parent=self.root,
+            )
+        else:
+            self.status.set(
+                f"Новых заявок: {len(self.submissions)} "
+                "(отклонение записано в таблицу)"
+            )
+            messagebox.showinfo(
+                "Заявка отклонена",
+                "В таблице установлен статус «Отклонено — локально». "
+                "Ответ автора и файлы в облаке не удалены.",
+                parent=self.root,
+            )
 
     def _download_onedrive_file(self, url, max_size):
         encoded_url = base64.urlsafe_b64encode(url.encode("utf-8")).decode("ascii")
@@ -608,6 +634,16 @@ class ModeratorApp:
         return result or None
 
     def _ask_issue_number(self):
+        try:
+            last_commit = self._run_git("log", "-1", "--format=%s")
+        except Exception as exc:
+            messagebox.showerror(
+                "Не удалось получить последний commit",
+                str(exc),
+                parent=self.root,
+            )
+            return None
+
         dialog = tk.Toplevel(self.root)
         dialog.title("Commit и push")
         dialog.transient(self.root)
@@ -616,12 +652,17 @@ class ModeratorApp:
         frame = ttk.Frame(dialog, padding=12)
         frame.pack(fill="both", expand=True)
 
+        ttk.Label(
+            frame,
+            text=f"Последний commit: {last_commit or '(без названия)'}",
+            wraplength=560,
+        ).grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 8))
         ttk.Label(frame, text="Номер issue для commit-сообщения #n:").grid(
-            row=0, column=0, sticky="w", pady=4
+            row=1, column=0, sticky="w", pady=4
         )
         issue_number = tk.StringVar()
         entry = ttk.Entry(frame, textvariable=issue_number, width=20)
-        entry.grid(row=0, column=1, pady=4)
+        entry.grid(row=1, column=1, pady=4)
         result = {}
 
         def accept():
@@ -629,7 +670,7 @@ class ModeratorApp:
             dialog.destroy()
 
         buttons = ttk.Frame(frame)
-        buttons.grid(row=1, column=0, columnspan=2, sticky="e", pady=(10, 0))
+        buttons.grid(row=2, column=0, columnspan=2, sticky="e", pady=(10, 0))
         ttk.Button(buttons, text="Отмена", command=dialog.destroy).pack(side="right")
         ttk.Button(buttons, text="Продолжить", command=accept).pack(
             side="right", padx=6
@@ -691,8 +732,9 @@ class ModeratorApp:
             return
 
         try:
-            self.status.set("Добавляю изменения и создаю commit...")
+            self.status.set("Обновляю каталог, добавляю изменения и создаю commit...")
             self.root.update_idletasks()
+            self._increment_catalog_schema()
             self._run_git("add", ".")
             self._run_git("commit", "-m", f"#{issue_number}")
         except Exception as exc:
@@ -734,6 +776,21 @@ class ModeratorApp:
         if not isinstance(catalog.get("themes"), list):
             raise ValueError("В catalog.json ожидается массив `themes`.")
         return catalog_path, catalog
+
+    def _increment_catalog_schema(self):
+        catalog_path, catalog = self._read_catalog()
+        version = catalog.get("schemaVersion")
+        if isinstance(version, bool) or not isinstance(version, int) or version < 0:
+            raise ValueError(
+                "В catalog.json поле `schemaVersion` должно быть "
+                "неотрицательным целым числом."
+            )
+        catalog["schemaVersion"] = version + 1
+        catalog["updatedAt"] = local_timestamp()
+        content = (json.dumps(catalog, ensure_ascii=False, indent=2) + "\n").encode(
+            "utf-8"
+        )
+        self._atomic_write(catalog_path, content)
 
     @staticmethod
     def _atomic_write(path, content):
@@ -823,7 +880,7 @@ class ModeratorApp:
             themes[themes.index(matches[0])] = entry
         else:
             themes.append(entry)
-        catalog["updatedAt"] = date.today().isoformat()
+        catalog["updatedAt"] = local_timestamp()
         catalog_bytes = (
             json.dumps(catalog, ensure_ascii=False, indent=2) + "\n"
         ).encode("utf-8")

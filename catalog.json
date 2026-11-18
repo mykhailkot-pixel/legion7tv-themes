@@ -1,19 +1,19 @@
 {
-  "schemaVersion": 1,
-  "updatedAt": "2026-11-18",
+  "schemaVersion": 2,
+  "updatedAt": "2026-11-18T20:01:43+01:00",
   "themes": [
     {
-      "id": "demo",
-      "name": "Тестовая тема",
-      "author": "Твой ник",
+      "id": "clouds",
+      "name": "Облачки",
+      "author": "proctio_fliy",
       "version": "1.0.0",
-      "description": "Проверка каталога и загрузки CSS",
+      "description": "Облачки с солнышком.",
       "tags": [
         "test"
       ],
       "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/demo/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/demo/preview.png"
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/preview.png"
     },
     {
       "id": "neon1",
@@ -25,6 +25,20 @@
       "license": "MIT",
       "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/neon1/style.css",
       "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/neon1/preview.png"
+    },
+    {
+      "id": "femboy1",
+      "name": "Femboy WW",
+      "author": "faldoorch",
+      "version": "1.0.0",
+      "description": "Лучший фембой стиль",
+      "tags": [
+        "femboy",
+        "cute"
+      ],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/femboy1/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/femboy1/preview.png"
     }
   ]
 }
