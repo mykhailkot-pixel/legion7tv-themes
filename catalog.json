@@ -10,8 +10,8 @@
       "description": "Проверка каталога и загрузки CSS",
       "tags": ["test"],
       "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@v1.0.0/themes/demo/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@v1.0.0/themes/demo/preview.png"
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/demo/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/demo/preview.png"
     }
   ]
 }
