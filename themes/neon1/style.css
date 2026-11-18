@@ -1,0 +1,360 @@
+/* ===== UwU Fluff Theme ===== */
+
+.cy-chat {
+  --uwu-bg-0: #231331;
+  --uwu-bg-1: #34194a;
+  --uwu-bg-2: #46205f;
+  --uwu-pink: #ff9fd2;
+  --uwu-pink-hot: #ff5fae;
+  --uwu-lav: #c8a8ff;
+  --uwu-mint: #a8f5e4;
+  --uwu-sky: #9fd8ff;
+  --uwu-cream: #fff2fb;
+  --uwu-text: #fff0fa;
+  --uwu-muted: #d9b9ee;
+}
+
+/* Кнопка сворачивания */
+.cy-chat .cy-chat-t {
+  background: linear-gradient(135deg, var(--uwu-pink), var(--uwu-lav));
+  color: #4a1f63;
+  border-radius: 16px;
+  box-shadow: 0 0 0 2px #fff, 0 4px 14px rgba(255, 95, 174, 0.55);
+  animation: uwu-twinkle 4s ease-in-out infinite;
+}
+.cy-chat .cy-chat-t:hover {
+  background: linear-gradient(135deg, var(--uwu-mint), var(--uwu-sky));
+  box-shadow: 0 0 0 2px #fff, 0 4px 18px rgba(159, 216, 255, 0.7);
+}
+.cy-chat .cy-chat-t:focus-visible {
+  outline: 3px solid var(--uwu-mint);
+  outline-offset: 2px;
+}
+
+/* Панель */
+.cy-chat .cy-chat-b {
+  color: var(--uwu-text);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255, 159, 210, 0.35) 0 3px, transparent 4px),
+    radial-gradient(circle at 88% 14%, rgba(168, 245, 228, 0.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 88%, rgba(200, 168, 255, 0.4) 0 3px, transparent 4px),
+    radial-gradient(circle at 20% 80%, rgba(159, 216, 255, 0.3) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 100% 0%, rgba(255, 95, 174, 0.28), transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(159, 216, 255, 0.22), transparent 55%),
+    repeating-radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.04) 0 2px, transparent 2px 22px),
+    linear-gradient(160deg, var(--uwu-bg-2), var(--uwu-bg-1) 45%, var(--uwu-bg-0));
+  box-shadow:
+    0 0 0 3px var(--uwu-pink),
+    0 0 0 6px rgba(200, 168, 255, 0.45),
+    0 10px 32px rgba(255, 95, 174, 0.35);
+}
+
+/* Заголовок с «облачным» краем */
+.cy-chat .cy-chat-h {
+  color: var(--uwu-cream);
+  background:
+    radial-gradient(circle at 10px 100%, var(--uwu-pink) 0 5px, transparent 6px) 0 100% / 20px 8px repeat-x,
+    radial-gradient(circle at 6% 30%, rgba(255, 255, 255, 0.5) 0 2px, transparent 3px),
+    radial-gradient(circle at 46% 60%, rgba(255, 255, 255, 0.4) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 92% 25%, rgba(255, 255, 255, 0.5) 0 2px, transparent 3px),
+    linear-gradient(90deg, rgba(255, 95, 174, 0.45), rgba(200, 168, 255, 0.4), rgba(159, 216, 255, 0.35));
+  background-size: 20px 8px, auto, auto, auto, 200% 100%;
+  border-radius: 20px 20px 0 0;
+  animation: uwu-header-drift 18s ease-in-out infinite alternate;
+}
+
+/* Вкладки */
+.cy-chat .cy-chat-tabs button[role="tab"] {
+  color: var(--uwu-muted);
+  background: linear-gradient(180deg, rgba(255, 159, 210, 0.16), rgba(200, 168, 255, 0.1));
+  border-radius: 14px 14px 0 0;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.cy-chat .cy-chat-tabs button[role="tab"]:hover {
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255, 159, 210, 0.4), rgba(200, 168, 255, 0.28));
+}
+.cy-chat .cy-chat-tabs button[role="tab"]:focus-visible {
+  outline: 2px solid var(--uwu-mint);
+  outline-offset: -2px;
+}
+.cy-chat .cy-chat-tabs button[role="tab"][aria-selected="true"] {
+  color: #4a1f63;
+  font-weight: 700;
+  background: linear-gradient(180deg, #fff, var(--uwu-pink) 70%, var(--uwu-lav));
+  box-shadow: 0 -2px 12px rgba(255, 159, 210, 0.6), inset 0 -3px 0 var(--uwu-pink-hot);
+}
+.cy-chat .cy-chat-tabs button[role="tab"]:active {
+  filter: brightness(0.95);
+}
+
+/* Счётчики */
+.cy-chat .cy-chat-tn,
+.cy-chat .cy-chat-n,
+.cy-chat [class$="-chat-tp"],
+.cy-chat [class$="-chat-pn"] {
+  color: #fff;
+  background: linear-gradient(135deg, var(--uwu-pink-hot), #ff8fc7);
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px #fff, 0 2px 8px rgba(255, 95, 174, 0.7);
+  font-weight: 700;
+}
+
+/* Фильтр пингов и навигация */
+.cy-chat [class*="-chat-filter"] {
+  color: var(--uwu-cream);
+  accent-color: var(--uwu-pink-hot);
+}
+.cy-chat [class*="-chat-filter"] input[type="checkbox"] {
+  accent-color: var(--uwu-pink-hot);
+}
+.cy-chat [class*="-ping-nav"] {
+  color: var(--uwu-cream);
+  border-radius: 12px;
+}
+.cy-chat [class*="-ping-nav"] button {
+  color: #4a1f63;
+  background: linear-gradient(135deg, var(--uwu-mint), var(--uwu-sky));
+  border-radius: 10px;
+}
+.cy-chat [class*="-ping-nav"] button:hover {
+  background: linear-gradient(135deg, #fff, var(--uwu-pink));
+}
+.cy-chat [class*="-ping-nav"] button:focus-visible {
+  outline: 2px solid var(--uwu-pink-hot);
+  outline-offset: 1px;
+}
+
+/* Обёртка и статусные области */
+.cy-chat .cy-chat-w {
+  background:
+    radial-gradient(circle at 95% 95%, rgba(255, 159, 210, 0.18) 0 22px, transparent 23px),
+    radial-gradient(circle at 92% 90%, rgba(255, 159, 210, 0.18) 0 7px, transparent 8px),
+    radial-gradient(circle at 98% 88%, rgba(255, 159, 210, 0.18) 0 7px, transparent 8px),
+    radial-gradient(circle at 5% 5%, rgba(168, 245, 228, 0.12) 0 18px, transparent 19px);
+}
+.cy-chat .cy-chat-p,
+.cy-chat .cy-chat-to,
+.cy-chat .cy-chat-e {
+  color: var(--uwu-cream);
+  background: linear-gradient(90deg, rgba(255, 95, 174, 0.3), rgba(200, 168, 255, 0.25));
+  border-radius: 12px;
+  text-shadow: 0 1px 2px rgba(35, 19, 49, 0.8);
+}
+
+/* Лента сообщений */
+.cy-chat .cy-chat-l {
+  scrollbar-width: thin;
+  scrollbar-color: var(--uwu-pink) rgba(35, 19, 49, 0.6);
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar {
+  width: 10px;
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar-track {
+  background: rgba(35, 19, 49, 0.6);
+  border-radius: 999px;
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--uwu-pink), var(--uwu-lav));
+  border-radius: 999px;
+  border: 2px solid rgba(35, 19, 49, 0.6);
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--uwu-mint), var(--uwu-sky));
+}
+
+.cy-chat .cy-chat-l > li {
+  color: var(--uwu-text);
+  background:
+    radial-gradient(circle at calc(100% - 10px) 10px, rgba(255, 255, 255, 0.14) 0 1.5px, transparent 2.5px),
+    linear-gradient(90deg, rgba(255, 159, 210, 0.14), rgba(200, 168, 255, 0.07) 60%, transparent);
+  border-radius: 14px;
+  box-shadow: inset 3px 0 0 rgba(255, 159, 210, 0.7);
+  text-shadow: 0 1px 2px rgba(35, 19, 49, 0.85);
+}
+.cy-chat .cy-chat-l > li:nth-child(even) {
+  background:
+    radial-gradient(circle at calc(100% - 10px) 10px, rgba(255, 255, 255, 0.14) 0 1.5px, transparent 2.5px),
+    linear-gradient(90deg, rgba(159, 216, 255, 0.13), rgba(168, 245, 228, 0.06) 60%, transparent);
+  box-shadow: inset 3px 0 0 rgba(159, 216, 255, 0.7);
+}
+.cy-chat .cy-chat-l > li:hover {
+  background: linear-gradient(90deg, rgba(255, 159, 210, 0.26), rgba(200, 168, 255, 0.14) 60%, transparent);
+}
+
+/* Ссылки */
+.cy-chat .cy-chat-l a {
+  color: var(--uwu-mint);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.cy-chat .cy-chat-l a:hover {
+  color: #fff;
+  background: rgba(168, 245, 228, 0.2);
+  border-radius: 6px;
+}
+.cy-chat .cy-chat-l a:focus-visible {
+  outline: 2px solid var(--uwu-pink);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Превью изображений */
+.cy-chat .cy-chat-l a img {
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px var(--uwu-pink), 0 4px 12px rgba(255, 95, 174, 0.35);
+}
+
+/* Пинги */
+.cy-chat .cy-chat-l > li[class*="-ping"],
+.cy-chat .cy-chat-l > li.ping {
+  background:
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(255, 255, 255, 0.55) 0 2px, transparent 3px),
+    radial-gradient(circle at calc(100% - 30px) 22px, rgba(255, 255, 255, 0.35) 0 1.5px, transparent 2.5px),
+    linear-gradient(90deg, rgba(255, 95, 174, 0.38), rgba(255, 159, 210, 0.2) 55%, rgba(200, 168, 255, 0.08));
+  box-shadow: inset 4px 0 0 var(--uwu-pink-hot), 0 0 14px rgba(255, 95, 174, 0.35);
+}
+.cy-chat [class*="-mention"] {
+  color: #4a1f63;
+  background: linear-gradient(135deg, #fff, var(--uwu-mint));
+  border-radius: 8px;
+  padding: 0 4px;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+/* Форма и поле ввода */
+.cy-chat form.cy-chat-f {
+  background: linear-gradient(0deg, rgba(255, 95, 174, 0.22), transparent);
+  border-radius: 0 0 20px 20px;
+}
+.cy-chat form.cy-chat-f input[type="text"] {
+  color: var(--uwu-cream);
+  background: rgba(35, 19, 49, 0.75);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 2px rgba(200, 168, 255, 0.6);
+  caret-color: var(--uwu-pink-hot);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.cy-chat form.cy-chat-f input[type="text"]::placeholder {
+  color: var(--uwu-muted);
+  opacity: 0.85;
+}
+.cy-chat form.cy-chat-f input[type="text"]:hover {
+  box-shadow: inset 0 0 0 2px var(--uwu-lav);
+}
+.cy-chat form.cy-chat-f input[type="text"]:focus-visible {
+  outline: none;
+  background: rgba(52, 25, 74, 0.9);
+  box-shadow: inset 0 0 0 2px var(--uwu-pink), 0 0 14px rgba(255, 159, 210, 0.6);
+}
+.cy-chat form.cy-chat-f input[type="text"]:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Кнопка отправки */
+.cy-chat form.cy-chat-f button[type="submit"] {
+  color: #4a1f63;
+  background: linear-gradient(135deg, #fff, var(--uwu-pink) 60%, var(--uwu-lav));
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px #fff, 0 3px 12px rgba(255, 95, 174, 0.55);
+  transition: box-shadow 0.2s, filter 0.2s;
+}
+.cy-chat form.cy-chat-f button[type="submit"]:hover {
+  filter: brightness(1.08) saturate(1.1);
+  box-shadow: 0 0 0 2px #fff, 0 3px 18px rgba(255, 159, 210, 0.9);
+}
+.cy-chat form.cy-chat-f button[type="submit"]:focus-visible {
+  outline: 3px solid var(--uwu-mint);
+  outline-offset: 2px;
+}
+.cy-chat form.cy-chat-f button[type="submit"]:active {
+  filter: brightness(0.95);
+}
+.cy-chat form.cy-chat-f button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Внешние host-элементы кнопок 7TV / imgBB / Пасты */
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]) {
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px var(--uwu-pink), 0 0 0 4px rgba(200, 168, 255, 0.5), 0 3px 12px rgba(255, 95, 174, 0.45);
+  transition: box-shadow 0.2s, filter 0.2s;
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):hover,
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):focus-within {
+  box-shadow: 0 0 0 2px var(--uwu-mint), 0 0 0 4px rgba(159, 216, 255, 0.55), 0 3px 18px rgba(168, 245, 228, 0.7);
+  filter: brightness(1.08);
+}
+
+/* Кнопки управления в заголовке */
+.cy-chat .cy-chat-sh,
+.cy-chat .cy-chat-x {
+  color: var(--uwu-cream);
+  background: rgba(255, 159, 210, 0.22);
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+.cy-chat .cy-chat-sh:hover,
+.cy-chat .cy-chat-x:hover {
+  color: #4a1f63;
+  background: var(--uwu-pink);
+}
+.cy-chat .cy-chat-sh:focus-visible,
+.cy-chat .cy-chat-x:focus-visible {
+  outline: 2px solid var(--uwu-mint);
+  outline-offset: 1px;
+}
+.cy-chat .cy-chat-sh:disabled,
+.cy-chat .cy-chat-x:disabled {
+  opacity: 0.5;
+}
+
+/* Ручки изменения размера */
+.cy-chat .cy-chat-rz,
+.cy-chat .cy-chat-eg {
+  background: linear-gradient(135deg, rgba(255, 159, 210, 0.5), rgba(200, 168, 255, 0.5));
+  border-radius: 8px;
+  opacity: 0.8;
+}
+.cy-chat .cy-chat-rz:hover,
+.cy-chat .cy-chat-eg:hover {
+  background: linear-gradient(135deg, var(--uwu-pink), var(--uwu-mint));
+  opacity: 1;
+}
+
+/* Анимации */
+@keyframes uwu-twinkle {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12); }
+}
+@keyframes uwu-header-drift {
+  from { background-position: 0 100%, 0 0, 0 0, 0 0, 0% 0; }
+  to { background-position: 0 100%, 0 0, 0 0, 0 0, 100% 0; }
+}
+
+/* Узкое окно */
+@media (max-width: 480px) {
+  .cy-chat .cy-chat-b {
+    border-radius: 16px;
+    box-shadow: 0 0 0 2px var(--uwu-pink), 0 6px 20px rgba(255, 95, 174, 0.35);
+  }
+  .cy-chat .cy-chat-l > li {
+    border-radius: 10px;
+  }
+}
+
+/* Меньше движения */
+@media (prefers-reduced-motion: reduce) {
+  .cy-chat .cy-chat-t,
+  .cy-chat .cy-chat-h {
+    animation: none;
+  }
+  .cy-chat * {
+    transition: none !important;
+  }
+}
