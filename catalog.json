@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-18T20:57:43+01:00",
+  "updatedAt": "2026-11-20T17:59:17+01:00",
   "themes": [
     {
       "id": "clouds",
@@ -52,6 +52,17 @@
       "license": "MIT",
       "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/papers/style.css",
       "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/papers/preview.png"
+    },
+    {
+      "id": "cats",
+      "name": "cats",
+      "author": "procto_fliy",
+      "version": "1.0.0",
+      "description": "",
+      "tags": [],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/preview.png"
     }
   ]
 }
