@@ -1,0 +1,1045 @@
+/* ===== «КОТО-БАНАНОВАЯ ПИЦЦА-ДИСКОТЕКА НА ЛУНЕ С ДОГЕ» v2 ===== */
+
+.cy-chat {
+  --ab-bg: #1a0033;
+  --ab-pink: #ff2fb9;
+  --ab-lime: #b6ff00;
+  --ab-cyan: #00f0ff;
+  --ab-yellow: #ffe600;
+  --ab-orange: #ff7a00;
+  --ab-red: #ff1744;
+  --ab-text: #fff7ff;
+  --ab-muted: #e2c6ff;
+  --ab-rainbow: linear-gradient(90deg, #ff1744, #ff9100, #ffe600, #76ff03, #00e5ff, #651fff, #f50057);
+  font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", Impact, sans-serif;
+  color: var(--ab-text);
+}
+
+/* ---------- Сворачивание ---------- */
+.cy-chat .cy-chat-t {
+  background:
+    linear-gradient(135deg, rgba(255,47,185,.82), rgba(255,230,0,.78)),
+    url("https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg") center/cover no-repeat;
+  color: #fff;
+  border-radius: 50% 18% 50% 18%;
+  box-shadow: 0 0 0 3px var(--ab-yellow), 0 0 0 6px var(--ab-pink), 0 0 0 9px var(--ab-cyan), 0 6px 18px rgba(0,0,0,.6);
+  text-shadow: 0 0 6px #000, 1px 1px 0 #000;
+  cursor: pointer;
+  transition: transform .2s ease, filter .2s ease;
+}
+.cy-chat .cy-chat-t:hover { transform: rotate(-12deg) scale(1.12); filter: saturate(1.5) hue-rotate(40deg); }
+.cy-chat .cy-chat-t:active { transform: rotate(10deg) scale(.92); }
+.cy-chat .cy-chat-t:focus-visible { outline: 3px dashed var(--ab-lime); outline-offset: 3px; }
+.cy-chat .cy-chat-t:disabled { filter: grayscale(1) brightness(.6); cursor: not-allowed; }
+
+/* ---------- Панель: луна + радужная рамка ---------- */
+.cy-chat .cy-chat-b {
+  border: 5px solid transparent;
+  border-radius: 16px 40px 16px 40px;
+  background-image:
+    linear-gradient(180deg, rgba(26,0,51,.78), rgba(43,10,77,.88) 55%, rgba(26,0,51,.93)),
+    url("https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg"),
+    linear-gradient(var(--ab-bg), var(--ab-bg)),
+    linear-gradient(90deg, #ff1744, #ff9100, #ffe600, #76ff03, #00e5ff, #651fff, #f50057, #ff1744);
+  background-size: auto, cover, auto, auto;
+  background-position: 0 0, center top, 0 0, 0 0;
+  background-repeat: no-repeat;
+  background-origin: padding-box, padding-box, padding-box, border-box;
+  background-clip: padding-box, padding-box, padding-box, border-box;
+  box-shadow: 0 0 30px rgba(255,47,185,.6), 0 0 60px rgba(0,240,255,.25), inset 0 0 40px rgba(0,240,255,.2);
+  color: var(--ab-text);
+  overflow: hidden;
+}
+
+/* ---------- Заголовок: яблоко + подсолнух + клубника ---------- */
+.cy-chat .cy-chat-h {
+  background:
+    repeating-linear-gradient(45deg, rgba(255,230,0,.2) 0 10px, rgba(255,47,185,.2) 10px 20px),
+    linear-gradient(90deg, rgba(26,0,51,.72), rgba(26,0,51,.35) 50%, rgba(26,0,51,.72)),
+    url("https://upload.wikimedia.org/wikipedia/commons/4/41/Sunflower_from_Silesia2.jpg") right center/auto 240% no-repeat,
+    url("https://upload.wikimedia.org/wikipedia/commons/9/90/PerfectStrawberry.jpg") center/auto 260% no-repeat,
+    url("https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg") left center/auto 280% no-repeat,
+    linear-gradient(90deg, #4b0082, #ff2fb9);
+  border-bottom: 4px dotted var(--ab-lime);
+  color: var(--ab-yellow);
+  text-shadow: 2px 2px 0 #000, 0 0 10px var(--ab-pink);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.cy-chat .cy-chat-sh,
+.cy-chat .cy-chat-x,
+.cy-chat .cy-chat-h button {
+  background: linear-gradient(180deg, var(--ab-yellow), var(--ab-orange));
+  color: #2b0050;
+  border-radius: 40% 10% 40% 10%;
+  box-shadow: 0 0 0 2px #000, 3px 3px 0 var(--ab-pink);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.cy-chat .cy-chat-sh:hover,
+.cy-chat .cy-chat-x:hover,
+.cy-chat .cy-chat-h button:hover {
+  transform: translateY(-2px) rotate(-8deg) scale(1.08);
+  filter: brightness(1.15) saturate(1.4);
+  box-shadow: 0 0 0 2px #000, 5px 5px 0 var(--ab-cyan);
+}
+.cy-chat .cy-chat-sh:active,
+.cy-chat .cy-chat-x:active,
+.cy-chat .cy-chat-h button:active { transform: translateY(1px) scale(.9); box-shadow: 0 0 0 2px #000, 1px 1px 0 var(--ab-pink); }
+.cy-chat .cy-chat-sh:focus-visible,
+.cy-chat .cy-chat-x:focus-visible,
+.cy-chat .cy-chat-h button:focus-visible { outline: 3px dashed var(--ab-lime); outline-offset: 2px; }
+.cy-chat .cy-chat-sh:disabled,
+.cy-chat .cy-chat-x:disabled,
+.cy-chat .cy-chat-h button:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; box-shadow: none; }
+
+/* ---------- Вкладки ---------- */
+.cy-chat .cy-chat-tabs {
+  background: linear-gradient(90deg, rgba(0,240,255,.22), rgba(255,47,185,.26), rgba(255,230,0,.22));
+  border-bottom: 3px solid var(--ab-cyan);
+}
+.cy-chat .cy-chat-tabs button[role="tab"] {
+  background: linear-gradient(180deg, #3a0f66, #240044);
+  color: var(--ab-muted);
+  border-radius: 14px 14px 0 0;
+  box-shadow: inset 0 0 0 1px rgba(255,47,185,.7);
+  font-weight: 800;
+  cursor: pointer;
+  transition: color .15s ease, transform .15s ease, filter .15s ease;
+}
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-child(odd) { transform: rotate(-1.5deg); }
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-child(even) { transform: rotate(1.5deg); }
+.cy-chat .cy-chat-tabs button[role="tab"]:hover { color: var(--ab-lime); transform: rotate(0) skewX(-8deg) scale(1.05); filter: brightness(1.3); }
+.cy-chat .cy-chat-tabs button[role="tab"]:active { transform: scale(.93); }
+.cy-chat .cy-chat-tabs button[role="tab"]:focus-visible { outline: 3px solid var(--ab-yellow); outline-offset: -3px; }
+.cy-chat .cy-chat-tabs button[role="tab"]:disabled { opacity: .45; cursor: not-allowed; }
+.cy-chat .cy-chat-tabs button[role="tab"][aria-selected="true"] {
+  background:
+    linear-gradient(180deg, rgba(255,47,185,.9), rgba(138,0,255,.9)),
+    url("https://upload.wikimedia.org/wikipedia/commons/9/90/PerfectStrawberry.jpg") center/cover;
+  color: #fff;
+  text-shadow: 0 0 8px #000, 1px 1px 0 #000;
+  box-shadow: inset 0 0 0 2px var(--ab-yellow), 0 -3px 14px rgba(255,47,185,.9);
+}
+
+.cy-chat .cy-chat-tn,
+.cy-chat .cy-chat-n {
+  background: radial-gradient(circle at 30% 30%, #fff 0, var(--ab-lime) 35%, #00a86b 100%);
+  color: #1a0033;
+  font-weight: 900;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px #000, 0 0 12px var(--ab-lime);
+}
+
+/* ---------- Обёртка и лента ---------- */
+.cy-chat .cy-chat-w { background: transparent; color: var(--ab-text); }
+.cy-chat .cy-chat-l {
+  background:
+    linear-gradient(rgba(26,0,51,.82), rgba(26,0,51,.82)),
+    url("https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg") 0 0/110px auto repeat;
+  color: var(--ab-text);
+  scrollbar-width: thin;
+  scrollbar-color: var(--ab-pink) #240044;
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar { width: 14px; }
+.cy-chat .cy-chat-l::-webkit-scrollbar-track {
+  background: repeating-linear-gradient(0deg, #240044 0 6px, #3a0f66 6px 12px);
+  border-left: 2px solid var(--ab-cyan);
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ab-lime), var(--ab-cyan), var(--ab-pink), var(--ab-yellow));
+  border-radius: 10px;
+  border: 2px solid #000;
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--ab-yellow), var(--ab-orange)); }
+
+/* ---------- Сообщения: каждое с «едой» в правом углу ---------- */
+.cy-chat .cy-chat-l > li {
+  background:
+    linear-gradient(90deg, rgba(58,15,102,.96) 0%, rgba(36,0,68,.94) 78%, rgba(36,0,68,.72) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg") right center/auto 220% no-repeat,
+    #240044;
+  color: var(--ab-text);
+  border-left: 5px solid var(--ab-cyan);
+  border-bottom: 2px dashed rgba(255,230,0,.5);
+  border-radius: 4px 18px 4px 18px;
+  box-shadow: 3px 3px 0 rgba(255,47,185,.6);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  transform: rotate(-.35deg);
+  transition: transform .2s ease, filter .2s ease;
+}
+.cy-chat .cy-chat-l > li:nth-child(even) {
+  background:
+    linear-gradient(90deg, rgba(84,0,92,.96) 0%, rgba(48,0,80,.94) 78%, rgba(48,0,80,.72) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/9/90/PerfectStrawberry.jpg") right center/auto 220% no-repeat,
+    #30005a;
+  border-left-color: var(--ab-lime);
+  box-shadow: 3px 3px 0 rgba(0,240,255,.55);
+  transform: rotate(.35deg);
+}
+.cy-chat .cy-chat-l > li:nth-child(3n) {
+  background:
+    linear-gradient(90deg, rgba(30,10,90,.96) 0%, rgba(20,0,60,.94) 78%, rgba(20,0,60,.72) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg") right center/auto 260% no-repeat,
+    #1c0050;
+  border-left-color: var(--ab-yellow);
+}
+.cy-chat .cy-chat-l > li:nth-child(5n) {
+  background:
+    linear-gradient(90deg, rgba(70,0,60,.96) 0%, rgba(40,0,50,.94) 78%, rgba(40,0,50,.72) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/5/5f/Original_Doge_meme.jpg") right center/auto 260% no-repeat,
+    #3a0035;
+  border-left-color: var(--ab-orange);
+}
+.cy-chat .cy-chat-l > li:hover { transform: rotate(0) scale(1.01); filter: brightness(1.2) saturate(1.25); }
+
+.cy-chat .cy-chat-l > li a {
+  color: var(--ab-cyan);
+  text-decoration: underline wavy var(--ab-pink);
+  text-underline-offset: 3px;
+  transition: color .15s ease, text-shadow .15s ease;
+}
+.cy-chat .cy-chat-l > li a:hover { color: var(--ab-yellow); text-shadow: 0 0 8px var(--ab-orange); }
+.cy-chat .cy-chat-l > li a:focus-visible { outline: 2px dashed var(--ab-lime); outline-offset: 2px; }
+.cy-chat .cy-chat-l > li a:visited { color: #ff9bf0; }
+
+.cy-chat .cy-chat-l > li img {
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px var(--ab-yellow), 0 0 0 5px var(--ab-pink), 0 0 0 7px var(--ab-cyan);
+  max-width: 100%;
+}
+
+/* ---------- Теги гильдий ---------- */
+.cy-chat .cy-gt {
+  background: linear-gradient(90deg, #000, #3a0040);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--ab-yellow), 0 0 10px var(--ab-pink);
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+.cy-chat .cy-gt,
+.cy-chat .cy-gt * {
+  color: #b6ff00 !important;
+  text-shadow: 0 0 6px #ff2fb9, 1px 1px 0 #000 !important;
+}
+
+/* ---------- ПИНГИ: теперь заметные ---------- */
+.cy-chat .cy-chat-l > li[class*="-ping"],
+.cy-chat .cy-chat-l > li.ping {
+  background:
+    repeating-linear-gradient(-45deg, rgba(255,230,0,.55) 0 14px, rgba(255,23,68,.55) 14px 28px),
+    linear-gradient(90deg, #5a0020, #7a0040) !important;
+  border-left: 10px solid var(--ab-yellow) !important;
+  border-right: 6px solid var(--ab-red) !important;
+  border-top: 2px solid var(--ab-yellow) !important;
+  border-bottom: 2px solid var(--ab-yellow) !important;
+  box-shadow: 0 0 0 2px #000, 0 0 0 5px var(--ab-pink), 0 0 22px rgba(255,230,0,.9) !important;
+  transform: rotate(0) !important;
+  animation: ab-ping-pop .7s ease-out 1;
+}
+.cy-chat .cy-chat-l > li[class*="-ping"] *,
+.cy-chat .cy-chat-l > li.ping * { text-shadow: 1px 1px 0 #000, 0 0 4px #000; }
+
+.cy-chat [class*="-mention"],
+.cy-chat [class*="-mention"] * {
+  color: #1a0033 !important;
+  -webkit-text-fill-color: #1a0033 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+.cy-chat [class*="-mention"] {
+  background: linear-gradient(180deg, #fff700, #ffb300) !important;
+  font-weight: 900;
+  padding: 0 5px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px var(--ab-red), 3px 3px 0 var(--ab-pink);
+}
+
+.cy-chat [class$="-chat-tp"] {
+  background: linear-gradient(135deg, var(--ab-red), var(--ab-orange));
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 #000;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px #000, 0 0 12px var(--ab-red);
+}
+.cy-chat [class$="-chat-pn"] {
+  background: linear-gradient(135deg, var(--ab-cyan), #0077ff);
+  color: #00121f;
+  font-weight: 900;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px #000, 0 0 12px var(--ab-cyan);
+}
+
+.cy-chat [class$="-chat-tp"] button,
+.cy-chat [class$="-chat-pn"] button,
+.cy-chat [class*="-ping"] button {
+  background: linear-gradient(180deg, var(--ab-lime), #3ddc00);
+  color: #1a0033;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #000, 2px 2px 0 var(--ab-pink);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+.cy-chat [class$="-chat-tp"] button:hover,
+.cy-chat [class$="-chat-pn"] button:hover,
+.cy-chat [class*="-ping"] button:hover { transform: scale(1.12) rotate(-5deg); filter: brightness(1.15); }
+.cy-chat [class$="-chat-tp"] button:active,
+.cy-chat [class$="-chat-pn"] button:active,
+.cy-chat [class*="-ping"] button:active { transform: scale(.9); }
+.cy-chat [class$="-chat-tp"] button:focus-visible,
+.cy-chat [class$="-chat-pn"] button:focus-visible,
+.cy-chat [class*="-ping"] button:focus-visible { outline: 3px dashed var(--ab-yellow); outline-offset: 2px; }
+.cy-chat [class$="-chat-tp"] button:disabled,
+.cy-chat [class$="-chat-pn"] button:disabled,
+.cy-chat [class*="-ping"] button:disabled { filter: grayscale(1) brightness(.5); cursor: not-allowed; }
+
+.cy-chat input[type="checkbox"] { accent-color: var(--ab-pink); cursor: pointer; filter: drop-shadow(0 0 4px var(--ab-lime)); }
+.cy-chat input[type="checkbox"]:hover { filter: drop-shadow(0 0 8px var(--ab-yellow)); }
+.cy-chat input[type="checkbox"]:focus-visible { outline: 2px dashed var(--ab-yellow); outline-offset: 2px; }
+.cy-chat input[type="checkbox"]:disabled { opacity: .4; cursor: not-allowed; filter: none; }
+.cy-chat label { color: var(--ab-muted); }
+
+/* ---------- Статусные области ---------- */
+.cy-chat .cy-chat-p,
+.cy-chat .cy-chat-to,
+.cy-chat .cy-chat-e {
+  background: linear-gradient(90deg, rgba(0,240,255,.25), rgba(255,47,185,.25), rgba(255,230,0,.2));
+  color: var(--ab-yellow);
+  text-shadow: 1px 1px 0 #000;
+  border-top: 1px dashed var(--ab-cyan);
+  border-bottom: 1px dashed var(--ab-pink);
+}
+.cy-chat .cy-chat-e { color: #ff9a9a; }
+
+/* ---------- Форма (кот + доге) ---------- */
+.cy-chat form.cy-chat-f {
+  background:
+    linear-gradient(90deg, rgba(26,0,51,.92) 0%, rgba(26,0,51,.8) 60%, rgba(26,0,51,.5) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg") right center/auto 320% no-repeat,
+    url("https://upload.wikimedia.org/wikipedia/commons/5/5f/Original_Doge_meme.jpg") left center/auto 320% no-repeat,
+    #240044;
+  border-top: 4px solid var(--ab-lime);
+  box-shadow: inset 0 3px 16px rgba(182,255,0,.35);
+}
+.cy-chat form.cy-chat-f input[type="text"] {
+  background: rgba(10,0,24,.9);
+  color: var(--ab-text);
+  caret-color: var(--ab-lime);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 2px var(--ab-pink), 0 0 12px rgba(255,47,185,.5);
+  outline: none;
+  transition: box-shadow .2s ease, background .2s ease;
+}
+.cy-chat form.cy-chat-f input[type="text"]::placeholder { color: #c9a0ff; font-style: italic; }
+.cy-chat form.cy-chat-f input[type="text"]:hover { box-shadow: inset 0 0 0 2px var(--ab-cyan), 0 0 14px rgba(0,240,255,.6); }
+.cy-chat form.cy-chat-f input[type="text"]:focus,
+.cy-chat form.cy-chat-f input[type="text"]:focus-visible {
+  background: rgba(30,0,60,.96);
+  box-shadow: inset 0 0 0 2px var(--ab-lime), 0 0 18px rgba(182,255,0,.8);
+}
+.cy-chat form.cy-chat-f input[type="text"]:disabled { opacity: .45; cursor: not-allowed; }
+
+.cy-chat form.cy-chat-f button[type="submit"] {
+  background: linear-gradient(135deg, var(--ab-lime), var(--ab-cyan));
+  color: #1a0033;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: 16px 4px 16px 4px;
+  box-shadow: 0 0 0 2px #000, 3px 3px 0 var(--ab-pink);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+}
+.cy-chat form.cy-chat-f button[type="submit"]:hover {
+  transform: translateY(-2px) rotate(-4deg) scale(1.05);
+  filter: brightness(1.15) saturate(1.4);
+  box-shadow: 0 0 0 2px #000, 5px 5px 0 var(--ab-yellow);
+}
+.cy-chat form.cy-chat-f button[type="submit"]:active { transform: translateY(1px) scale(.94); box-shadow: 0 0 0 2px #000, 1px 1px 0 var(--ab-pink); }
+.cy-chat form.cy-chat-f button[type="submit"]:focus-visible { outline: 3px dashed var(--ab-yellow); outline-offset: 2px; }
+.cy-chat form.cy-chat-f button[type="submit"]:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; box-shadow: 0 0 0 2px #000; }
+
+.cy-chat .cy-emo-b {
+  background: radial-gradient(circle at 35% 30%, var(--ab-yellow), var(--ab-orange) 70%);
+  color: #2b0050;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #000, 0 0 12px var(--ab-yellow);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+.cy-chat .cy-emo-b:hover { transform: rotate(18deg) scale(1.15); filter: brightness(1.15); }
+.cy-chat .cy-emo-b:active { transform: scale(.88); }
+.cy-chat .cy-emo-b:focus-visible { outline: 3px dashed var(--ab-lime); outline-offset: 2px; }
+.cy-chat .cy-emo-b:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; }
+
+.cy-chat .cy-chat-ap {
+  background: repeating-linear-gradient(45deg, #ff1a1a 0 8px, #ffe600 8px 16px);
+  color: #000;
+  font-weight: 900;
+  text-shadow: 0 0 3px #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #000, 3px 3px 0 var(--ab-pink);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+.cy-chat .cy-chat-ap:hover { transform: scale(1.08) rotate(3deg); filter: brightness(1.15); }
+.cy-chat .cy-chat-ap:active { transform: scale(.92); }
+.cy-chat .cy-chat-ap:focus-visible { outline: 3px dashed var(--ab-cyan); outline-offset: 2px; }
+.cy-chat .cy-chat-ap:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; }
+
+/* ---------- Host-элементы 7TV / imgBB / «Пасты» (только внешние эффекты) ---------- */
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]) {
+  outline: 2px solid var(--ab-yellow);
+  box-shadow: 0 0 0 2px #000, 0 0 12px var(--ab-cyan), 3px 3px 0 var(--ab-pink);
+  filter: saturate(1.4) contrast(1.08);
+  transition: filter .15s ease, box-shadow .15s ease, outline-color .15s ease;
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):hover {
+  outline-color: var(--ab-lime);
+  box-shadow: 0 0 0 2px #000, 0 0 18px var(--ab-lime), 4px 4px 0 var(--ab-pink);
+  filter: saturate(1.9) hue-rotate(30deg) brightness(1.12);
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):active {
+  filter: saturate(1.5) brightness(.85);
+  box-shadow: 0 0 0 2px #000, 0 0 6px var(--ab-pink);
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):focus-within {
+  outline: 3px dashed var(--ab-red);
+  box-shadow: 0 0 0 2px #000, 0 0 18px var(--ab-yellow);
+}
+
+/* ---------- Ручки размера ---------- */
+.cy-chat .cy-chat-rz,
+.cy-chat .cy-chat-eg {
+  background: linear-gradient(135deg, transparent 40%, var(--ab-lime) 40% 60%, transparent 60%);
+  opacity: .85;
+  transition: opacity .15s ease, filter .15s ease;
+}
+.cy-chat .cy-chat-rz:hover,
+.cy-chat .cy-chat-eg:hover { opacity: 1; filter: drop-shadow(0 0 7px var(--ab-pink)); }
+
+/* ---------- Личные сообщения ---------- */
+.cy-chat .cy-chat-dmx { background: linear-gradient(180deg, rgba(26,0,51,.92), rgba(60,0,70,.92)); color: var(--ab-text); }
+.cy-chat .cy-chat-dmx .dm-tabs {
+  background: linear-gradient(90deg, rgba(255,230,0,.22), rgba(0,240,255,.22));
+  border-bottom: 2px dashed var(--ab-yellow);
+}
+.cy-chat .cy-chat-dmx .dm-tab,
+.cy-chat .cy-chat-dmx .dm-tab[role="tab"] {
+  background: linear-gradient(180deg, #3a0f66, #240044);
+  color: var(--ab-muted);
+  border-radius: 10px 10px 0 0;
+  box-shadow: inset 0 0 0 1px var(--ab-cyan);
+  cursor: pointer;
+  transition: filter .15s ease, transform .15s ease;
+}
+.cy-chat .cy-chat-dmx .dm-tab:hover { filter: brightness(1.3); transform: translateY(-1px) rotate(-1deg); }
+.cy-chat .cy-chat-dmx .dm-tab:active { transform: scale(.95); }
+.cy-chat .cy-chat-dmx .dm-tab:focus-visible { outline: 2px solid var(--ab-lime); outline-offset: -2px; }
+.cy-chat .cy-chat-dmx .dm-tab:disabled { opacity: .45; cursor: not-allowed; }
+.cy-chat .cy-chat-dmx .dm-tab.on,
+.cy-chat .cy-chat-dmx .dm-tab[aria-selected="true"] {
+  background: linear-gradient(180deg, var(--ab-lime), #00b86b);
+  color: #1a0033;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 2px #000, 0 -3px 12px rgba(182,255,0,.8);
+}
+.cy-chat .cy-chat-dmx .dm-un { background: var(--ab-pink); color: #fff; font-weight: 900; border-radius: 999px; box-shadow: 0 0 0 2px #000; }
+.cy-chat .cy-chat-dmx [data-dmx] { color: var(--ab-yellow); cursor: pointer; transition: transform .15s ease, color .15s ease; }
+.cy-chat .cy-chat-dmx [data-dmx]:hover { color: #ff4d4d; transform: rotate(180deg); }
+.cy-chat .cy-chat-dmx [data-dmx]:focus-visible { outline: 2px dashed var(--ab-lime); }
+
+.cy-chat .cy-chat-dmx .dm-h {
+  background:
+    linear-gradient(90deg, rgba(138,0,255,.85), rgba(255,47,185,.8)),
+    url("https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg") right center/auto 260% no-repeat;
+  border-bottom: 3px dotted var(--ab-yellow);
+  color: #fff;
+}
+.cy-chat .cy-chat-dmx .dm-who { color: var(--ab-yellow); font-weight: 900; text-shadow: 2px 2px 0 #000; }
+.cy-chat .cy-chat-dmx .dm-acts [data-dma],
+.cy-chat .cy-chat-dmx [data-dma] {
+  background: linear-gradient(180deg, var(--ab-yellow), var(--ab-orange));
+  color: #2b0050;
+  font-weight: 800;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #000, 2px 2px 0 var(--ab-pink);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+.cy-chat .cy-chat-dmx [data-dma]:hover { transform: translateY(-2px) rotate(-3deg); filter: brightness(1.15); }
+.cy-chat .cy-chat-dmx [data-dma]:active { transform: scale(.94); }
+.cy-chat .cy-chat-dmx [data-dma]:focus-visible { outline: 3px dashed var(--ab-lime); outline-offset: 2px; }
+.cy-chat .cy-chat-dmx [data-dma]:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; }
+
+.cy-chat .cy-chat-dmx .dm-rep {
+  background: repeating-linear-gradient(45deg, rgba(255,0,0,.25) 0 10px, rgba(0,0,0,.4) 10px 20px);
+  border: 2px dashed #ff4d4d;
+  border-radius: 10px;
+}
+.cy-chat .cy-chat-dmx .dm-rep input { background: rgba(10,0,24,.94); color: var(--ab-text); border-radius: 8px; box-shadow: inset 0 0 0 2px #ff4d4d; }
+.cy-chat .cy-chat-dmx .dm-rep input:focus-visible { outline: 2px solid var(--ab-yellow); }
+.cy-chat .cy-chat-dmx .dm-rep button {
+  background: linear-gradient(180deg, #ff4d4d, #b30000);
+  color: #fff;
+  font-weight: 800;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #000;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+.cy-chat .cy-chat-dmx .dm-rep button:hover { filter: brightness(1.25); }
+.cy-chat .cy-chat-dmx .dm-rep button:active { transform: scale(.95); }
+.cy-chat .cy-chat-dmx .dm-rep button:focus-visible { outline: 3px dashed var(--ab-yellow); outline-offset: 2px; }
+.cy-chat .cy-chat-dmx .dm-rep button:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; }
+
+.cy-chat .cy-chat-dmx .dm-l {
+  background:
+    linear-gradient(rgba(26,0,51,.86), rgba(26,0,51,.86)),
+    url("https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg") center/150px auto repeat;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ab-lime) #240044;
+}
+.cy-chat .cy-chat-dmx .dm-l li {
+  background: linear-gradient(90deg, rgba(58,15,102,.95), rgba(36,0,68,.95));
+  color: var(--ab-text);
+  border-left: 4px solid var(--ab-cyan);
+  border-radius: 4px 14px 4px 14px;
+  overflow-wrap: anywhere;
+}
+.cy-chat .cy-chat-dmx .dm-l li.me {
+  background: linear-gradient(90deg, rgba(110,0,100,.95), rgba(70,0,120,.95));
+  border-left: 0;
+  border-right: 4px solid var(--ab-lime);
+  border-radius: 14px 4px 14px 4px;
+}
+.cy-chat .cy-chat-dmx .dm-0 { color: var(--ab-yellow); font-style: italic; text-shadow: 1px 1px 0 #000; }
+.cy-chat .cy-chat-dmx .dm-old,
+.cy-chat .cy-chat-dmx [data-dmold] {
+  background: linear-gradient(90deg, var(--ab-cyan), var(--ab-lime));
+  color: #1a0033;
+  font-weight: 800;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: filter .15s ease, transform .15s ease;
+}
+.cy-chat .cy-chat-dmx .dm-old:hover,
+.cy-chat .cy-chat-dmx [data-dmold]:hover { filter: brightness(1.15); transform: scale(1.04); }
+.cy-chat .cy-chat-dmx [data-dmold]:focus-visible { outline: 3px dashed var(--ab-pink); outline-offset: 2px; }
+.cy-chat .cy-chat-dmx [data-dmold]:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; }
+.cy-chat .cy-chat-dmx .dm-e { color: var(--ab-yellow); background: rgba(255,47,185,.2); }
+
+.cy-chat .cy-chat-dmx form.dm-f {
+  background:
+    linear-gradient(90deg, rgba(26,0,51,.9), rgba(26,0,51,.7)),
+    url("https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg") right center/auto 320% no-repeat,
+    #240044;
+  border-top: 3px solid var(--ab-pink);
+}
+.cy-chat .cy-chat-dmx form.dm-f input { background: rgba(10,0,24,.92); color: var(--ab-text); border-radius: 10px; box-shadow: inset 0 0 0 2px var(--ab-cyan); outline: none; }
+.cy-chat .cy-chat-dmx form.dm-f input:focus-visible { box-shadow: inset 0 0 0 2px var(--ab-lime), 0 0 12px var(--ab-lime); }
+.cy-chat .cy-chat-dmx form.dm-f input:disabled { opacity: .45; }
+.cy-chat .cy-chat-dmx form.dm-f button[type="submit"] {
+  background: linear-gradient(135deg, var(--ab-pink), var(--ab-orange));
+  color: #fff;
+  font-weight: 900;
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px #000, 3px 3px 0 var(--ab-cyan);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+.cy-chat .cy-chat-dmx form.dm-f button[type="submit"]:hover { transform: translateY(-2px) rotate(-3deg); filter: brightness(1.15); }
+.cy-chat .cy-chat-dmx form.dm-f button[type="submit"]:active { transform: scale(.94); }
+.cy-chat .cy-chat-dmx form.dm-f button[type="submit"]:focus-visible { outline: 3px dashed var(--ab-yellow); outline-offset: 2px; }
+.cy-chat .cy-chat-dmx form.dm-f button[type="submit"]:disabled { filter: grayscale(1) brightness(.55); cursor: not-allowed; }
+
+/* ---------- Анимации ---------- */
+@keyframes ab-ping-pop {
+  0%   { transform: scale(.94) rotate(-2deg); }
+  50%  { transform: scale(1.04) rotate(1deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* ---------- Узкое окно ---------- */
+@media (max-width: 480px) {
+  .cy-chat .cy-chat-b { border-width: 3px; border-radius: 10px 24px 10px 24px; }
+  .cy-chat .cy-chat-h { background-size: auto, auto, auto 170%, auto 190%, auto 200%, auto; }
+  .cy-chat .cy-chat-l > li { border-radius: 4px 10px 4px 10px; box-shadow: 1px 1px 0 rgba(255,47,185,.6); }
+  .cy-chat form.cy-chat-f { background-size: auto, auto 240%, auto 240%, auto; }
+  .cy-chat .cy-chat-l,
+  .cy-chat .cy-chat-w { max-width: 100%; overflow-x: hidden; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cy-chat .cy-chat-l > li[class*="-ping"],
+  .cy-chat .cy-chat-l > li.ping { animation: none; }
+  .cy-chat .cy-chat-t,
+  .cy-chat .cy-chat-sh,
+  .cy-chat .cy-chat-x,
+  .cy-chat .cy-chat-h button,
+  .cy-chat .cy-chat-tabs button[role="tab"],
+  .cy-chat .cy-chat-l > li,
+  .cy-chat .cy-emo-b,
+  .cy-chat .cy-chat-ap,
+  .cy-chat form.cy-chat-f button[type="submit"],
+  .cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]) {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ===== ФИКС НАЛОЖЕНИЯ ОБВОДОК (добавить в конец) ===== */
+
+/* Картинки и эмоуты: тонкая рамка ВНУТРИ, ничего не вылезает наружу и не искажается */
+.cy-chat .cy-chat-l > li img {
+  box-shadow: none !important;
+  outline: 2px solid var(--ab-pink);
+  outline-offset: -2px;
+  border-radius: 8px;
+  max-width: 100%;
+}
+.cy-chat .cy-chat-dmx .dm-l li img {
+  box-shadow: none !important;
+  outline: 2px solid var(--ab-pink);
+  outline-offset: -2px;
+  border-radius: 8px;
+  max-width: 100%;
+}
+
+/* Сообщения: без наклона и без выступающих теней */
+.cy-chat .cy-chat-l > li,
+.cy-chat .cy-chat-l > li:nth-child(even),
+.cy-chat .cy-chat-l > li:nth-child(3n),
+.cy-chat .cy-chat-l > li:nth-child(5n),
+.cy-chat .cy-chat-l > li:hover {
+  transform: none !important;
+  box-shadow: inset -3px -3px 0 rgba(255,47,185,.5) !important;
+}
+.cy-chat .cy-chat-l > li:nth-child(even) {
+  box-shadow: inset -3px -3px 0 rgba(0,240,255,.5) !important;
+}
+
+/* Пинг: рамка и свечение внутри строки */
+.cy-chat .cy-chat-l > li[class*="-ping"],
+.cy-chat .cy-chat-l > li.ping {
+  animation: none !important;
+  transform: none !important;
+  box-shadow:
+    inset 0 0 0 2px #000,
+    inset 0 0 0 4px var(--ab-pink),
+    inset 0 0 18px rgba(255,230,0,.85) !important;
+}
+
+/* Упоминание: обводка внутри, не заходит на соседний текст */
+.cy-chat [class*="-mention"] {
+  box-shadow:
+    inset 0 0 0 2px #000,
+    inset 0 0 0 4px var(--ab-red) !important;
+  padding: 1px 7px !important;
+  margin: 0 2px;
+  border-radius: 8px;
+}
+
+/* Тег гильдии: без внешнего свечения на ник */
+.cy-chat .cy-gt {
+  box-shadow: inset 0 0 0 1px var(--ab-yellow), inset 0 0 6px var(--ab-pink) !important;
+  margin-right: 2px;
+}
+
+/* Счётчики: компактнее */
+.cy-chat .cy-chat-tn,
+.cy-chat .cy-chat-n,
+.cy-chat [class$="-chat-tp"],
+.cy-chat [class$="-chat-pn"] {
+  box-shadow: 0 0 0 2px #000 !important;
+}
+
+/* Вкладки: без наклона, чтобы не наезжали друг на друга */
+.cy-chat .cy-chat-tabs button[role="tab"],
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-child(odd),
+.cy-chat .cy-chat-tabs button[role="tab"]:nth-child(even),
+.cy-chat .cy-chat-tabs button[role="tab"]:hover {
+  transform: none !important;
+}
+.cy-chat .cy-chat-tabs button[role="tab"][aria-selected="true"] {
+  box-shadow: inset 0 0 0 2px var(--ab-yellow) !important;
+}
+
+/* Кнопки заголовка, отправки и смайлов: тени не выходят за границы */
+.cy-chat .cy-chat-sh,
+.cy-chat .cy-chat-x,
+.cy-chat .cy-chat-h button,
+.cy-chat form.cy-chat-f button[type="submit"],
+.cy-chat .cy-emo-b {
+  box-shadow: 0 0 0 2px #000 !important;
+}
+.cy-chat .cy-chat-sh:hover,
+.cy-chat .cy-chat-x:hover,
+.cy-chat .cy-chat-h button:hover,
+.cy-chat form.cy-chat-f button[type="submit"]:hover,
+.cy-chat .cy-emo-b:hover {
+  box-shadow: 0 0 0 2px #000, 0 0 6px var(--ab-yellow) !important;
+}
+
+/* Host-кнопки 7TV / imgBB / «Пасты»: эффект меньше зазора 5 px, соседей не касается */
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]) {
+  outline: 2px solid var(--ab-yellow);
+  outline-offset: -2px;
+  box-shadow: none;
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):hover {
+  outline-color: var(--ab-lime);
+  box-shadow: 0 0 4px var(--ab-lime);
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):active {
+  box-shadow: none;
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):focus-within {
+  outline: 2px dashed var(--ab-red);
+  outline-offset: -2px;
+  box-shadow: 0 0 4px var(--ab-yellow);
+}
+
+/* ===== ТРИП-ПАТЧ v3: психоделика (добавить в самый конец) ===== */
+
+.cy-chat {
+  --tr-violet: #7c4dff;
+  --tr-hot: #ff00aa;
+  --tr-acid: #c6ff00;
+}
+
+/* ---------- Панель: цветные «пятна», луна и бегущая радужная рамка ---------- */
+.cy-chat .cy-chat-b {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,0,170,.38), transparent 42%),
+    radial-gradient(circle at 88% 72%, rgba(0,240,255,.32), transparent 46%),
+    linear-gradient(180deg, rgba(26,0,51,.74), rgba(43,10,77,.86) 55%, rgba(26,0,51,.92)),
+    url("https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg"),
+    linear-gradient(var(--ab-bg), var(--ab-bg)),
+    linear-gradient(90deg, #ff1744, #ff9100, #ffe600, #76ff03, #00e5ff, #651fff, #f50057, #ff1744) !important;
+  background-size: auto, auto, auto, cover, auto, 300% 100% !important;
+  background-position: 0 0, 0 0, 0 0, center top, 0 0, 0% 0 !important;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat-x !important;
+  background-origin: padding-box, padding-box, padding-box, padding-box, padding-box, border-box !important;
+  background-clip: padding-box, padding-box, padding-box, padding-box, padding-box, border-box !important;
+  box-shadow:
+    0 0 26px rgba(255,0,170,.75),
+    0 0 54px rgba(0,240,255,.45),
+    0 0 90px rgba(124,77,255,.35),
+    inset 0 0 46px rgba(198,255,0,.18),
+    inset 0 0 90px rgba(255,0,170,.16) !important;
+  animation: trp-frame 14s ease-in-out infinite alternate;
+}
+
+/* ---------- Заголовок: бегущие радужные полосы поверх фруктов ---------- */
+.cy-chat .cy-chat-h {
+  background:
+    repeating-linear-gradient(90deg, rgba(255,23,68,.38) 0 24px, rgba(255,230,0,.38) 24px 48px, rgba(118,255,3,.38) 48px 72px, rgba(0,229,255,.38) 72px 96px, rgba(101,31,255,.38) 96px 120px, rgba(245,0,87,.38) 120px 144px),
+    linear-gradient(90deg, rgba(26,0,51,.72), rgba(26,0,51,.32) 50%, rgba(26,0,51,.72)),
+    url("https://upload.wikimedia.org/wikipedia/commons/4/41/Sunflower_from_Silesia2.jpg"),
+    url("https://upload.wikimedia.org/wikipedia/commons/9/90/PerfectStrawberry.jpg"),
+    url("https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg"),
+    linear-gradient(90deg, #4b0082, #ff00aa, #7c4dff) !important;
+  background-size: 200% 100%, auto, auto 240%, auto 260%, auto 280%, auto !important;
+  background-position: 0% 0, 0 0, right center, center, left center, 0 0 !important;
+  background-repeat: repeat-x, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat !important;
+  border-bottom: 4px solid var(--tr-acid) !important;
+  text-shadow: 2px 2px 0 #000, -1px 0 var(--ab-cyan), 0 0 12px var(--tr-hot) !important;
+  animation: trp-head 9s linear infinite alternate;
+}
+
+/* ---------- Вкладки ---------- */
+.cy-chat .cy-chat-tabs {
+  background: linear-gradient(90deg, rgba(0,240,255,.3), rgba(255,0,170,.34), rgba(255,230,0,.3), rgba(118,255,3,.3)) !important;
+  border-bottom: 3px solid var(--tr-violet) !important;
+  box-shadow: inset 0 -3px 10px rgba(198,255,0,.35);
+}
+.cy-chat .cy-chat-tabs button[role="tab"] {
+  background: linear-gradient(180deg, #4a1590, #1c0040) !important;
+  box-shadow: inset 0 0 0 1px var(--tr-hot), inset 0 -4px 8px rgba(0,240,255,.28) !important;
+}
+.cy-chat .cy-chat-tabs button[role="tab"][aria-selected="true"] {
+  background:
+    linear-gradient(180deg, rgba(255,0,170,.88), rgba(124,77,255,.9)),
+    url("https://upload.wikimedia.org/wikipedia/commons/9/90/PerfectStrawberry.jpg") center/cover !important;
+  box-shadow: inset 0 0 0 2px var(--ab-yellow), inset 0 0 14px rgba(255,255,255,.4) !important;
+}
+
+/* ---------- Лента: психоделические кольца ---------- */
+.cy-chat .cy-chat-l {
+  background:
+    repeating-radial-gradient(circle at 50% 0%, rgba(255,0,170,.13) 0 16px, rgba(0,240,255,.13) 16px 32px, rgba(198,255,0,.12) 32px 48px, rgba(124,77,255,.13) 48px 64px),
+    linear-gradient(rgba(26,0,51,.8), rgba(26,0,51,.8)),
+    url("https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg") 0 0 / 110px auto repeat !important;
+}
+.cy-chat .cy-chat-l::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff1744, #ffe600, #76ff03, #00e5ff, #651fff, #f50057) !important;
+}
+
+/* ---------- Сообщения: вихри + еда/мемы в углу ---------- */
+.cy-chat .cy-chat-l > li {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255,0,170,.28), transparent 45%),
+    linear-gradient(90deg, rgba(58,15,102,.97) 0%, rgba(36,0,68,.95) 74%, rgba(36,0,68,.66) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg") right center / auto 230% no-repeat,
+    #240044;
+  border-left: 5px solid var(--ab-cyan);
+  border-bottom: 2px dotted rgba(255,230,0,.6);
+  text-shadow: 1px 1px 0 rgba(0,0,0,.85), -1px 0 rgba(0,240,255,.3);
+  transform: none !important;
+  box-shadow: inset -4px 0 0 rgba(255,0,170,.55), inset 0 0 18px rgba(124,77,255,.3) !important;
+}
+.cy-chat .cy-chat-l > li:nth-child(even) {
+  background:
+    radial-gradient(circle at 0% 100%, rgba(0,240,255,.26), transparent 45%),
+    linear-gradient(90deg, rgba(84,0,92,.97) 0%, rgba(48,0,80,.95) 74%, rgba(48,0,80,.66) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/9/90/PerfectStrawberry.jpg") right center / auto 230% no-repeat,
+    #30005a;
+  border-left-color: var(--tr-acid);
+  box-shadow: inset -4px 0 0 rgba(0,240,255,.55), inset 0 0 18px rgba(255,0,170,.28) !important;
+}
+.cy-chat .cy-chat-l > li:nth-child(3n) {
+  background:
+    radial-gradient(circle at 100% 100%, rgba(255,230,0,.24), transparent 45%),
+    linear-gradient(90deg, rgba(30,10,90,.97) 0%, rgba(20,0,60,.95) 74%, rgba(20,0,60,.66) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg") right center / auto 270% no-repeat,
+    #1c0050;
+  border-left-color: var(--ab-yellow);
+}
+.cy-chat .cy-chat-l > li:nth-child(5n) {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(198,255,0,.22), transparent 45%),
+    linear-gradient(90deg, rgba(70,0,60,.97) 0%, rgba(40,0,50,.95) 74%, rgba(40,0,50,.66) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/5/5f/Original_Doge_meme.jpg") right center / auto 270% no-repeat,
+    #3a0035;
+  border-left-color: var(--ab-orange);
+}
+.cy-chat .cy-chat-l > li:nth-child(7n) {
+  background:
+    radial-gradient(circle at 100% 50%, rgba(124,77,255,.3), transparent 45%),
+    linear-gradient(90deg, rgba(20,20,90,.97) 0%, rgba(10,0,60,.95) 74%, rgba(10,0,60,.66) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg") right center / auto 270% no-repeat,
+    #140050;
+  border-left-color: var(--tr-hot);
+}
+.cy-chat .cy-chat-l > li:hover {
+  filter: brightness(1.22) saturate(1.35);
+}
+
+/* Пинг остаётся самым ярким */
+.cy-chat .cy-chat-l > li[class*="-ping"],
+.cy-chat .cy-chat-l > li.ping {
+  background:
+    repeating-linear-gradient(-45deg, rgba(255,230,0,.6) 0 14px, rgba(255,23,68,.6) 14px 28px, rgba(255,0,170,.6) 28px 42px),
+    linear-gradient(90deg, #5a0020, #7a0040) !important;
+  box-shadow:
+    inset 0 0 0 2px #000,
+    inset 0 0 0 4px var(--tr-hot),
+    inset 0 0 22px rgba(255,230,0,.95) !important;
+}
+
+/* ---------- Теги гильдий: цвет текста по-прежнему !important ---------- */
+.cy-chat .cy-gt {
+  background: linear-gradient(90deg, #000, #4a0060, #000) !important;
+  box-shadow: inset 0 0 0 1px var(--ab-yellow), inset 0 0 8px var(--tr-hot) !important;
+}
+.cy-chat .cy-gt,
+.cy-chat .cy-gt * {
+  color: #c6ff00 !important;
+  text-shadow: 0 0 6px #ff00aa, 0 0 12px #00f0ff, 1px 1px 0 #000 !important;
+}
+
+/* ---------- Форма ввода ---------- */
+.cy-chat form.cy-chat-f {
+  box-shadow: inset 0 4px 18px rgba(198,255,0,.4), inset 0 -4px 18px rgba(255,0,170,.3) !important;
+  border-top: 4px solid var(--tr-violet) !important;
+}
+.cy-chat form.cy-chat-f input[type="text"] {
+  background:
+    linear-gradient(rgba(10,0,24,.92), rgba(10,0,24,.92)) !important;
+  box-shadow: inset 0 0 0 2px var(--tr-hot), inset 0 0 14px rgba(0,240,255,.35) !important;
+}
+.cy-chat form.cy-chat-f input[type="text"]:focus,
+.cy-chat form.cy-chat-f input[type="text"]:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--tr-acid), inset 0 0 18px rgba(198,255,0,.5) !important;
+}
+.cy-chat form.cy-chat-f button[type="submit"] {
+  background: conic-gradient(from 0deg, #ff1744, #ffe600, #76ff03, #00e5ff, #651fff, #f50057, #ff1744) !important;
+  color: #1a0033 !important;
+  text-shadow: 0 0 4px #fff;
+}
+.cy-chat .cy-emo-b {
+  background: conic-gradient(from 45deg, #ffe600, #ff7a00, #ff00aa, #7c4dff, #00f0ff, #ffe600) !important;
+}
+
+/* ---------- Кнопки заголовка ---------- */
+.cy-chat .cy-chat-sh,
+.cy-chat .cy-chat-x,
+.cy-chat .cy-chat-h button {
+  background: conic-gradient(from 90deg, #ffe600, #ff7a00, #ff00aa, #7c4dff, #ffe600) !important;
+}
+
+/* ---------- Сворачивание ---------- */
+.cy-chat .cy-chat-t {
+  background:
+    conic-gradient(from 0deg, rgba(255,23,68,.7), rgba(255,230,0,.7), rgba(118,255,3,.7), rgba(0,229,255,.7), rgba(101,31,255,.7), rgba(245,0,87,.7), rgba(255,23,68,.7)),
+    url("https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg") center / cover no-repeat !important;
+}
+
+/* ---------- Анимации (медленные, только рамка и заголовок) ---------- */
+@keyframes trp-frame {
+  0%   { background-position: 0 0, 0 0, 0 0, center top, 0 0, 0% 0; }
+  100% { background-position: 0 0, 0 0, 0 0, center top, 0 0, 100% 0; }
+}
+@keyframes trp-head {
+  0%   { background-position: 0% 0, 0 0, right center, center, left center, 0 0; }
+  100% { background-position: 100% 0, 0 0, right center, center, left center, 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-chat .cy-chat-b,
+  .cy-chat .cy-chat-h { animation: none; }
+}
+
+/* ---------- Узкое окно ---------- */
+@media (max-width: 480px) {
+  .cy-chat .cy-chat-h {
+    background-size: 200% 100%, auto, auto 170%, auto 190%, auto 200%, auto !important;
+  }
+  .cy-chat .cy-chat-l > li { background-size: auto, auto, auto 200%, auto !important; }
+}
+
+/* ===== ПАТЧ ПРОИЗВОДИТЕЛЬНОСТИ (добавить в самый конец) ===== */
+
+/* 1. Никаких постоянных анимаций */
+.cy-chat .cy-chat-b,
+.cy-chat .cy-chat-h,
+.cy-chat .cy-chat-l > li,
+.cy-chat .cy-chat-l > li[class*="-ping"],
+.cy-chat .cy-chat-l > li.ping {
+  animation: none !important;
+}
+
+/* 2. Панель: лёгкие слои, статичная радужная рамка, небольшая тень */
+.cy-chat .cy-chat-b {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,0,170,.30), transparent 42%),
+    radial-gradient(circle at 88% 72%, rgba(0,240,255,.26), transparent 46%),
+    linear-gradient(180deg, rgba(26,0,51,.80), rgba(43,10,77,.90) 55%, rgba(26,0,51,.94)),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/320px-FullMoon2010.jpg"),
+    linear-gradient(#1a0033, #1a0033),
+    linear-gradient(90deg, #ff1744, #ff9100, #ffe600, #76ff03, #00e5ff, #651fff, #f50057, #ff1744) !important;
+  background-size: auto, auto, auto, cover, auto, 100% 100% !important;
+  background-position: 0 0, 0 0, 0 0, center top, 0 0, 0 0 !important;
+  background-repeat: no-repeat !important;
+  box-shadow: 0 0 12px rgba(255,0,170,.6), inset 0 0 20px rgba(0,240,255,.2) !important;
+}
+
+/* 3. Заголовок: без картинок и бегущих полос */
+.cy-chat .cy-chat-h {
+  background:
+    repeating-linear-gradient(90deg, rgba(255,23,68,.30) 0 24px, rgba(255,230,0,.30) 24px 48px, rgba(118,255,3,.30) 48px 72px, rgba(0,229,255,.30) 72px 96px, rgba(101,31,255,.30) 96px 120px, rgba(245,0,87,.30) 120px 144px),
+    linear-gradient(90deg, #4b0082, #ff00aa, #7c4dff) !important;
+  background-size: auto !important;
+  background-position: 0 0 !important;
+  background-repeat: repeat !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+
+/* 4. Лента: простой градиент вместо тяжёлого тайла картинок */
+.cy-chat .cy-chat-l {
+  background:
+    linear-gradient(180deg, rgba(60,0,90,.92), rgba(26,0,51,.96)) !important;
+  contain: layout paint;
+}
+
+/* 5. Сообщения: только градиенты, без картинок, теней текста и фильтров */
+.cy-chat .cy-chat-l > li {
+  background: linear-gradient(90deg, #3a0f66, #240044) !important;
+  text-shadow: none !important;
+  box-shadow: inset -3px 0 0 rgba(255,0,170,.55) !important;
+  contain: paint;
+}
+.cy-chat .cy-chat-l > li:nth-child(even) {
+  background: linear-gradient(90deg, #54005c, #300050) !important;
+  box-shadow: inset -3px 0 0 rgba(0,240,255,.55) !important;
+}
+.cy-chat .cy-chat-l > li:nth-child(3n) {
+  background: linear-gradient(90deg, #1e0a5a, #14003c) !important;
+}
+.cy-chat .cy-chat-l > li:nth-child(5n) {
+  background: linear-gradient(90deg, #46003c, #280032) !important;
+}
+.cy-chat .cy-chat-l > li:nth-child(7n) {
+  background: linear-gradient(90deg, #14145a, #0a003c) !important;
+}
+.cy-chat .cy-chat-l > li:hover {
+  filter: none !important;
+  background-color: #4a1a80 !important;
+}
+
+/* 6. Пинг: по-прежнему самый яркий, но дешёвый */
+.cy-chat .cy-chat-l > li[class*="-ping"],
+.cy-chat .cy-chat-l > li.ping {
+  background:
+    repeating-linear-gradient(-45deg, rgba(255,230,0,.55) 0 14px, rgba(255,23,68,.55) 14px 28px),
+    linear-gradient(90deg, #5a0020, #7a0040) !important;
+  box-shadow: inset 0 0 0 2px #000, inset 0 0 0 4px #ff00aa !important;
+}
+
+/* 7. Убираем дорогие filter/drop-shadow везде */
+.cy-chat .cy-chat-t,
+.cy-chat .cy-chat-t:hover,
+.cy-chat .cy-chat-sh,
+.cy-chat .cy-chat-x,
+.cy-chat .cy-chat-h button,
+.cy-chat .cy-chat-sh:hover,
+.cy-chat .cy-chat-x:hover,
+.cy-chat .cy-chat-h button:hover,
+.cy-chat form.cy-chat-f button[type="submit"]:hover,
+.cy-chat .cy-emo-b:hover,
+.cy-chat .cy-chat-ap:hover,
+.cy-chat input[type="checkbox"],
+.cy-chat input[type="checkbox"]:hover,
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]),
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]):hover,
+.cy-chat .cy-chat-tabs button[role="tab"]:hover {
+  filter: none !important;
+}
+.cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > span:not([hidden]) {
+  transition: none !important;
+}
+
+/* 8. Кнопка сворачивания без картинки */
+.cy-chat .cy-chat-t {
+  background: conic-gradient(from 0deg, #ff1744, #ffe600, #76ff03, #00e5ff, #651fff, #f50057, #ff1744) !important;
+}
+
+/* 9. Форма: один маленький кот вместо двух огромных картинок */
+.cy-chat form.cy-chat-f {
+  background:
+    linear-gradient(90deg, rgba(26,0,51,.92) 0%, rgba(26,0,51,.8) 65%, rgba(26,0,51,.5) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/320px-Cat03.jpg") right center / auto 300% no-repeat,
+    #240044 !important;
+}
+
+/* 10. Личные сообщения: без тяжёлых фонов */
+.cy-chat .cy-chat-dmx .dm-l {
+  background: linear-gradient(180deg, #3c0046, #1a0033) !important;
+}
+.cy-chat .cy-chat-dmx .dm-h {
+  background: linear-gradient(90deg, #8a00ff, #ff2fb9) !important;
+}
+.cy-chat .cy-chat-dmx form.dm-f {
+  background: linear-gradient(90deg, #1a0033, #3c0046) !important;
+}
+
+/* 11. Вкладка активная: без картинки */
+.cy-chat .cy-chat-tabs button[role="tab"][aria-selected="true"] {
+  background: linear-gradient(180deg, #ff00aa, #7c4dff) !important;
+}
