@@ -5,3 +5,4 @@ credentials.json
 token.json
 moderator_config.json
 moderator_rejections.json
+.ignore/
