@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-21T21:57:04+01:00",
+  "updatedAt": "2026-11-25T14:58:44+01:00",
   "themes": [
     {
       "id": "clouds",
@@ -74,6 +74,19 @@
       "license": "MIT",
       "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/lsd/style.css",
       "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/lsd/preview.png"
+    },
+    {
+      "id": "old-dark",
+      "name": "старый тёмный",
+      "author": "procto_fliy",
+      "version": "1.0.0",
+      "description": "",
+      "tags": [
+        "тёмная"
+      ],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/old-dark/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/old-dark/preview.png"
     }
   ]
 }
