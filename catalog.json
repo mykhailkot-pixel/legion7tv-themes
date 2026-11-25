@@ -1,5 +1,70 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-25T17:48:32+01:00",
-  "themes": []
+  "updatedAt": "2026-11-25T17:49:32+01:00",
+  "themes": [
+    {
+      "id": "clouds",
+      "name": "Облачки",
+      "author": "proctio_fliy",
+      "version": "1.0.0",
+      "description": "Облачки с солнышком.",
+      "tags": [
+        "test"
+      ],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/preview.png"
+    },
+    {
+      "id": "femboy1",
+      "name": "Femboy WW",
+      "author": "faldoorch",
+      "version": "1.0.0",
+      "description": "Лучший фембой стиль",
+      "tags": [
+        "femboy",
+        "cute"
+      ],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/femboy1/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/femboy1/preview.png"
+    },
+    {
+      "id": "papers",
+      "name": "papers",
+      "author": "prtocto_fliy",
+      "version": "1.0.0",
+      "description": "",
+      "tags": [
+        "papers"
+      ],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/papers/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/papers/preview.png"
+    },
+    {
+      "id": "cats",
+      "name": "cats",
+      "author": "procto_fliy",
+      "version": "1.0.0",
+      "description": "",
+      "tags": [],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/preview.png"
+    },
+    {
+      "id": "old-dark",
+      "name": "старый тёмный",
+      "author": "procto_fliy",
+      "version": "1.0.0",
+      "description": "",
+      "tags": [
+        "тёмная"
+      ],
+      "license": "MIT",
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/old-dark/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/old-dark/preview.png"
+    }
+  ]
 }
