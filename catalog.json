@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-25T17:49:32+01:00",
+  "updatedAt": "2026-11-25T18:05:43+01:00",
   "themes": [
     {
       "id": "clouds",
@@ -12,8 +12,8 @@
         "test"
       ],
       "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/preview.png"
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/clouds/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/clouds/preview.png"
     },
     {
       "id": "femboy1",
@@ -26,8 +26,8 @@
         "cute"
       ],
       "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/femboy1/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/femboy1/preview.png"
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/femboy1/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/femboy1/preview.png"
     },
     {
       "id": "papers",
@@ -39,8 +39,8 @@
         "papers"
       ],
       "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/papers/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/papers/preview.png"
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/papers/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/papers/preview.png"
     },
     {
       "id": "cats",
@@ -50,8 +50,8 @@
       "description": "",
       "tags": [],
       "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/preview.png"
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/cats/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/cats/preview.png"
     },
     {
       "id": "old-dark",
@@ -63,8 +63,8 @@
         "тёмная"
       ],
       "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/old-dark/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/old-dark/preview.png"
+      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/old-dark/style.css",
+      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@8f543487199190b5b6b9ba7dfb6028a7c89ffa12/themes/old-dark/preview.png"
     }
   ]
 }
