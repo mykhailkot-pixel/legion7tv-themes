@@ -20,7 +20,8 @@
   --cm-dots: radial-gradient(circle, rgba(249, 133, 151, 0.28) 2.4px, transparent 3px),
              radial-gradient(circle, rgba(255, 255, 255, 0.75) 2px, transparent 2.6px);
   font-family: "Nunito", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-  color: var(--cm-ink);
+  background-color: var(--cm-panel) !important;
+  color: var(--cm-ink) !important;
 }
 
 .cy-chat *,
@@ -36,11 +37,11 @@
 
 /* ---------- Панель и обёртка: светло-розовый фон в горошек ---------- */
 .cy-chat .cy-chat-b {
-  background-color: var(--cm-panel);
-  background-image: var(--cm-dots);
-  background-size: 26px 26px, 26px 26px;
-  background-position: 0 0, 13px 13px;
-  color: var(--cm-ink);
+  background-color: var(--cm-panel) !important;
+  background-image: var(--cm-dots) !important;
+  background-size: 26px 26px, 26px 26px !important;
+  background-position: 0 0, 13px 13px !important;
+  color: var(--cm-ink) !important;
   border-color: var(--cm-ink);
   border-radius: 20px;
   box-shadow: 0 0 0 3px var(--cm-ink), 0 8px 0 rgba(74, 35, 38, 0.22), 0 14px 26px rgba(74, 35, 38, 0.3);
@@ -51,7 +52,7 @@
   background-image: var(--cm-dots) !important;
   background-size: 26px 26px, 26px 26px !important;
   background-position: 0 0, 13px 13px !important;
-  color: var(--cm-ink);
+  color: var(--cm-ink) !important;
 }
 
 /* ---------- Заголовок: двойная линия-разделитель ---------- */
@@ -63,20 +64,36 @@
   box-shadow: 0 2px 0 var(--cm-ink), 0 5px 0 var(--cm-panel), 0 6px 0 rgba(74, 35, 38, 0.35);
 }
 
-/* ---------- Кнопка сворачивания ---------- */
+/* ---------- Кнопка сворачивания / разворачивания («−») ---------- */
 .cy-chat .cy-chat-t {
-  background: var(--cm-wine);
-  color: #fff;
-  border-color: var(--cm-ink);
+  background: var(--cm-wine) !important;
+  color: #fff !important;
+  border: 1px solid var(--cm-ink) !important;
   border-radius: 999px;
   font-weight: 800;
   box-shadow: 0 0 0 2px var(--cm-ink), 0 4px 0 var(--cm-ink);
   cursor: pointer;
   transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
 }
-.cy-chat .cy-chat-t:hover { background: var(--cm-wine-hi); }
-.cy-chat .cy-chat-t:active { transform: translateY(2px); box-shadow: 0 0 0 2px var(--cm-ink), 0 2px 0 var(--cm-ink); }
-.cy-chat .cy-chat-t:focus-visible { outline: 3px solid var(--cm-pink-hi); outline-offset: 2px; }
+.cy-chat .cy-chat-t:hover {
+  background: var(--cm-wine-hi) !important;
+  color: #fff !important;
+  border-color: var(--cm-ink) !important;
+}
+.cy-chat .cy-chat-t:active {
+  background: var(--cm-wine) !important;
+  color: #fff !important;
+  border-color: var(--cm-ink) !important;
+  transform: translateY(2px);
+  box-shadow: 0 0 0 2px var(--cm-ink), 0 2px 0 var(--cm-ink);
+}
+.cy-chat .cy-chat-t:focus-visible {
+  background: var(--cm-wine-hi) !important;
+  color: #fff !important;
+  border-color: var(--cm-ink) !important;
+  outline: 3px solid var(--cm-pink-hi);
+  outline-offset: 2px;
+}
 .cy-chat .cy-chat-t:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* ---------- Вкладки ---------- */
@@ -119,9 +136,8 @@
 }
 .cy-chat .cy-chat-e { color: #b3243f; }
 
-/* ---------- Кнопки заголовка ---------- */
-.cy-chat .cy-chat-sh,
-.cy-chat .cy-chat-x {
+/* ---------- Кнопка «поделиться» в заголовке ---------- */
+.cy-chat .cy-chat-sh {
   background: var(--cm-card);
   color: var(--cm-ink);
   border-color: transparent;
@@ -131,31 +147,59 @@
   cursor: pointer;
   transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
 }
-.cy-chat .cy-chat-x { background: var(--cm-pink); }
 .cy-chat .cy-chat-sh:hover { background: #fff; }
-.cy-chat .cy-chat-x:hover { background: var(--cm-pink-hi); }
-.cy-chat .cy-chat-sh:active,
-.cy-chat .cy-chat-x:active { transform: translateY(2px); box-shadow: inset 0 0 0 2px var(--cm-ink), 0 1px 0 var(--cm-ink); }
-.cy-chat .cy-chat-sh:focus-visible,
-.cy-chat .cy-chat-x:focus-visible { outline: 3px solid var(--cm-wine); outline-offset: 2px; }
-.cy-chat .cy-chat-sh:disabled,
+.cy-chat .cy-chat-sh:active { transform: translateY(2px); box-shadow: inset 0 0 0 2px var(--cm-ink), 0 1px 0 var(--cm-ink); }
+.cy-chat .cy-chat-sh:focus-visible { outline: 3px solid var(--cm-wine); outline-offset: 2px; }
+.cy-chat .cy-chat-sh:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Кнопка закрытия ---------- */
+.cy-chat .cy-chat-x {
+  background: var(--cm-pink) !important;
+  color: var(--cm-ink) !important;
+  border: 1px solid var(--cm-ink) !important;
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: 0 0 0 2px var(--cm-ink), 0 3px 0 var(--cm-ink);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
+}
+.cy-chat .cy-chat-x:hover {
+  background: var(--cm-pink-hi) !important;
+  color: var(--cm-ink) !important;
+  border-color: var(--cm-ink) !important;
+}
+.cy-chat .cy-chat-x:active {
+  background: var(--cm-pink) !important;
+  color: var(--cm-ink) !important;
+  border-color: var(--cm-ink) !important;
+  transform: translateY(2px);
+  box-shadow: 0 0 0 2px var(--cm-ink), 0 1px 0 var(--cm-ink);
+}
+.cy-chat .cy-chat-x:focus-visible {
+  background: var(--cm-pink-hi) !important;
+  color: var(--cm-ink) !important;
+  border-color: var(--cm-ink) !important;
+  outline: 3px solid var(--cm-wine);
+  outline-offset: 2px;
+}
 .cy-chat .cy-chat-x:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* ---------- Навигация по пингам и фильтр ---------- */
+/* ---------- Счётчики пингов и навигация по ним (суффиксы, без installId) ---------- */
 .cy-chat [class$="-chat-tp"],
 .cy-chat [class$="-chat-pn"] {
-  background: var(--cm-violet);
-  color: #fff;
+  background: var(--cm-violet) !important;
+  color: #fff !important;
   border-color: transparent;
   border-radius: 999px;
   font-weight: 800;
   box-shadow: 0 0 0 2px var(--cm-ink);
 }
+/* кнопки внутри/вместо счётчиков: более высокая специфичность, чем у правила выше */
 .cy-chat [class$="-chat-tp"] button,
 .cy-chat button[class$="-chat-tp"],
 .cy-chat button[class$="-chat-pn"] {
-  background: var(--cm-card);
-  color: var(--cm-ink);
+  background: var(--cm-card) !important;
+  color: var(--cm-ink) !important;
   border-color: transparent;
   border-radius: 999px;
   font-weight: 800;
@@ -165,7 +209,7 @@
 }
 .cy-chat [class$="-chat-tp"] button:hover,
 .cy-chat button[class$="-chat-tp"]:hover,
-.cy-chat button[class$="-chat-pn"]:hover { background: var(--cm-pink-hi); }
+.cy-chat button[class$="-chat-pn"]:hover { background: var(--cm-pink-hi) !important; }
 .cy-chat [class$="-chat-tp"] button:active,
 .cy-chat button[class$="-chat-tp"]:active,
 .cy-chat button[class$="-chat-pn"]:active { transform: translateY(1px); }
@@ -233,7 +277,7 @@
 }
 
 /* ---------- Упоминания в обычных строках ---------- */
-.cy-chat [class*="-mention"] {
+.cy-chat [class$="-mention"] {
   background: #e6c9f7 !important;
   color: var(--cm-violet-deep) !important;
   font-weight: 800;
@@ -243,11 +287,11 @@
 }
 
 /* ---------- ПИНГ: строка, адресованная вам — яркая и заметная ---------- */
-.cy-chat .cy-chat-l > li[class*="-ping"],
-.cy-chat .cy-chat-l > li.ping,
-.cy-chat .cy-chat-l > li[class*="ping"] {
+.cy-chat .cy-chat-l > li[class$="-ping"],
+.cy-chat .cy-chat-l > li.ping {
   background-color: #ecd2fb !important;
   background-image: linear-gradient(90deg, #c88df2 0, #e9cdfa 16%, #f7e6fd 62%, #ffd0dc 100%) !important;
+  color: var(--cm-ink) !important;
   box-shadow:
     inset 0 0 0 3px var(--cm-violet),
     inset 10px 0 0 var(--cm-violet-deep),
@@ -255,9 +299,8 @@
     0 0 12px rgba(122, 60, 194, 0.55) !important;
   animation: cmeow-ping-flash 0.9s ease-out 1;
 }
-.cy-chat .cy-chat-l > li[class*="-ping"]:hover,
-.cy-chat .cy-chat-l > li.ping:hover,
-.cy-chat .cy-chat-l > li[class*="ping"]:hover {
+.cy-chat .cy-chat-l > li[class$="-ping"]:hover,
+.cy-chat .cy-chat-l > li.ping:hover {
   box-shadow:
     inset 0 0 0 3px var(--cm-wine),
     inset 10px 0 0 var(--cm-violet-deep),
@@ -266,9 +309,8 @@
 }
 
 /* Упоминание внутри строки-пинга — винно-красная плашка с белым текстом */
-.cy-chat .cy-chat-l > li[class*="-ping"] [class*="-mention"],
-.cy-chat .cy-chat-l > li.ping [class*="-mention"],
-.cy-chat .cy-chat-l > li[class*="ping"] [class*="-mention"] {
+.cy-chat .cy-chat-l > li[class$="-ping"] [class$="-mention"],
+.cy-chat .cy-chat-l > li.ping [class$="-mention"] {
   background: var(--cm-wine) !important;
   color: #fff !important;
   font-weight: 800;
@@ -600,7 +642,8 @@
 
 /* ---------- prefers-reduced-motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .cy-chat .cy-chat-l > li[class*="ping"] { animation: none; }
+  .cy-chat .cy-chat-l > li[class$="-ping"],
+  .cy-chat .cy-chat-l > li.ping { animation: none; }
   .cy-chat *,
   .cy-chat *::before,
   .cy-chat *::after { transition: none !important; }

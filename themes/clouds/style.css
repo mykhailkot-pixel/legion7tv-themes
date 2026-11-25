@@ -12,6 +12,10 @@
   --cysky-card-hover: rgba(255, 255, 255, 0.82);
   --cysky-shadow: 0 6px 18px rgba(70, 120, 190, 0.28);
   --cysky-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Явные непрозрачные фон и текст корневого контейнера */
+  background-color: #cfe9ff !important;
+  color: #27406b !important;
 }
 
 /* ───────── Анимации ───────── */
@@ -56,8 +60,9 @@
 
 /* ───────── Панель: небо, солнце, облака ───────── */
 
-.cy-chat .cy-chat-b {
-  background-color: #cfe9ff;
+.cy-chat .cy-chat-b,
+.cy-chat .cy-chat-w {
+  background-color: #cfe9ff !important;
   background-image:
     radial-gradient(circle at 100% 0, rgba(255, 248, 205, 0.95) 0, rgba(255, 226, 120, 0.85) 28px, rgba(255, 214, 102, 0.45) 72px, rgba(255, 214, 102, 0) 160px),
     /* облако A */
@@ -69,23 +74,22 @@
     radial-gradient(circle at 55% 58% , rgba(255, 255, 255, 0.75) 0, rgba(255, 255, 255, 0.75) 20px, rgba(255, 255, 255, 0) 28px),
     radial-gradient(circle at 66% 52%, rgba(255, 255, 255, 0.78) 0, rgba(255, 255, 255, 0.78) 26px, rgba(255, 255, 255, 0) 35px),
     /* небо */
-    linear-gradient(180deg, #b6defc 0%, #d4ecff 48%, #eaf5ff 78%, #fff1df 100%);
+    linear-gradient(180deg, #b6defc 0%, #d4ecff 48%, #eaf5ff 78%, #fff1df 100%) !important;
   background-size:
     100% 100%,
     520px 110px, 520px 110px, 520px 110px,
     700px 140px, 700px 140px, 700px 140px,
     100% 100%;
   background-repeat: no-repeat, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, no-repeat;
+  /* background-position без !important — им управляет анимация дрейфа */
   background-position: 0 0, 0 6%, 0 6%, 0 6%, 0 62%, 0 62%, 0 62%, 0 0;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(70, 120, 190, 0.35), inset 0 0 0 2px rgba(255, 255, 255, 0.75);
-  color: var(--cysky-ink);
+  color: #27406b !important;
   animation: cysky-drift 140s linear infinite;
 }
 
-.cy-chat .cy-chat-w {
-  background: transparent;
-  color: var(--cysky-ink);
+.cy-chat .cy-chat-b {
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(70, 120, 190, 0.35), inset 0 0 0 2px rgba(255, 255, 255, 0.75);
 }
 
 /* ───────── Заголовок ───────── */
@@ -100,11 +104,12 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* ───────── Сворачивание / разворачивание ───────── */
+/* ───────── Сворачивание / разворачивание (кнопка «−») ───────── */
 
 .cy-chat .cy-chat-t {
-  background: radial-gradient(circle at 35% 30%, #fff8cf 0%, #ffd75a 55%, #ffae33 100%);
-  color: #7a4300;
+  background: radial-gradient(circle at 35% 30%, #fff8cf 0%, #ffd75a 55%, #ffae33 100%) !important;
+  color: #7a4300 !important;
+  border: 1px solid #e8a21f !important;
   border-radius: 14px;
   box-shadow: 0 4px 14px rgba(255, 170, 50, 0.45);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -114,16 +119,25 @@
 }
 
 .cy-chat .cy-chat-t:hover {
+  background: radial-gradient(circle at 35% 30%, #fffbe0 0%, #ffe27a 55%, #ffb52e 100%) !important;
+  color: #6b3a00 !important;
+  border-color: #d98f10 !important;
   transform: scale(1.06) rotate(-2deg);
   filter: brightness(1.06);
 }
 
 .cy-chat .cy-chat-t:active {
+  background: radial-gradient(circle at 35% 30%, #ffe9a0 0%, #ffc93d 55%, #f59a1f 100%) !important;
+  color: #5a3000 !important;
+  border-color: #c77d0a !important;
   transform: scale(0.95);
   filter: brightness(0.96);
 }
 
 .cy-chat .cy-chat-t:focus-visible {
+  background: radial-gradient(circle at 35% 30%, #fffbe0 0%, #ffe27a 55%, #ffb52e 100%) !important;
+  color: #6b3a00 !important;
+  border-color: #5a9be8 !important;
   outline: 3px solid #5a9be8;
   outline-offset: 2px;
 }
@@ -185,10 +199,9 @@
   animation: cysky-badge-pop 0.4s var(--cysky-ease) both;
 }
 
-/* ───────── Кнопки заголовка ───────── */
+/* ───────── Кнопка заголовка: прочее (sh) ───────── */
 
-.cy-chat .cy-chat-sh,
-.cy-chat .cy-chat-x {
+.cy-chat .cy-chat-sh {
   background: rgba(255, 255, 255, 0.85);
   color: #3d6bb8;
   border-radius: 10px;
@@ -197,27 +210,64 @@
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s var(--cysky-ease), box-shadow 0.2s ease;
 }
 
-.cy-chat .cy-chat-sh:hover,
-.cy-chat .cy-chat-x:hover {
+.cy-chat .cy-chat-sh:hover {
   background: linear-gradient(180deg, #fff6c9 0%, #ffe27a 100%);
   color: #8a4a00;
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(255, 180, 60, 0.4), inset 0 1px 0 #ffffff;
 }
 
-.cy-chat .cy-chat-sh:active,
-.cy-chat .cy-chat-x:active {
+.cy-chat .cy-chat-sh:active {
   transform: scale(0.94);
   background: #ffd75a;
 }
 
-.cy-chat .cy-chat-sh:focus-visible,
-.cy-chat .cy-chat-x:focus-visible {
+.cy-chat .cy-chat-sh:focus-visible {
   outline: 2px solid #5a9be8;
   outline-offset: 2px;
 }
 
-.cy-chat .cy-chat-sh:disabled,
+.cy-chat .cy-chat-sh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ───────── Кнопка закрытия ───────── */
+
+.cy-chat .cy-chat-x {
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: #3d6bb8 !important;
+  border: 1px solid rgba(90, 155, 232, 0.55) !important;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(90, 150, 220, 0.3), inset 0 1px 0 #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s var(--cysky-ease), box-shadow 0.2s ease;
+}
+
+.cy-chat .cy-chat-x:hover {
+  background: linear-gradient(180deg, #fff6c9 0%, #ffe27a 100%) !important;
+  color: #8a4a00 !important;
+  border-color: #ffb52e !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 180, 60, 0.4), inset 0 1px 0 #ffffff;
+}
+
+.cy-chat .cy-chat-x:active {
+  background: #ffd75a !important;
+  color: #6b3a00 !important;
+  border-color: #e8a21f !important;
+  transform: scale(0.94);
+}
+
+.cy-chat .cy-chat-x:focus-visible {
+  background: linear-gradient(180deg, #fff6c9 0%, #ffe27a 100%) !important;
+  color: #8a4a00 !important;
+  border-color: #5a9be8 !important;
+  outline: 2px solid #5a9be8;
+  outline-offset: 2px;
+}
+
 .cy-chat .cy-chat-x:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -333,27 +383,37 @@
 
 /* ───────── Пинги ───────── */
 
-.cy-chat .cy-chat-l > li[class*="-ping"],
+/* Строка пинга: фон и акцент.
+   box-shadow без !important, чтобы работала анимация свечения. */
+.cy-chat .cy-chat-l > li[class$="-ping"],
 .cy-chat .cy-chat-l > li.ping {
-  background: linear-gradient(90deg, rgba(255, 232, 150, 0.9) 0%, rgba(255, 244, 205, 0.85) 60%, rgba(255, 255, 255, 0.7) 100%);
-  color: #4a3410;
+  background: linear-gradient(90deg, rgba(255, 232, 150, 0.9) 0%, rgba(255, 244, 205, 0.85) 60%, rgba(255, 255, 255, 0.7) 100%) !important;
+  color: #4a3410 !important;
   box-shadow: inset 4px 0 0 #ffb52e, 0 2px 6px rgba(255, 170, 50, 0.22);
   animation: cysky-ping-glow 2.6s ease-in-out 0.2s 3;
 }
 
-.cy-chat [class*="-mention"] {
-  background: rgba(255, 200, 80, 0.5);
-  color: #7a3f00;
+.cy-chat .cy-chat-l > li[class$="-ping"]:hover,
+.cy-chat .cy-chat-l > li.ping:hover {
+  background: linear-gradient(90deg, rgba(255, 226, 130, 0.95) 0%, rgba(255, 240, 190, 0.9) 60%, rgba(255, 255, 255, 0.8) 100%) !important;
+  color: #4a3410 !important;
+}
+
+/* Текст упоминания */
+.cy-chat [class$="-mention"] {
+  background: rgba(255, 200, 80, 0.5) !important;
+  color: #7a3f00 !important;
   border-radius: 6px;
   box-shadow: 0 0 0 2px rgba(255, 200, 80, 0.5);
   text-shadow: none;
   font-weight: 700;
 }
 
+/* Счётчики пингов */
 .cy-chat [class$="-chat-tp"],
 .cy-chat [class$="-chat-pn"] {
-  background: linear-gradient(180deg, #ffe27a 0%, #ffb52e 100%);
-  color: #6b3a00;
+  background: linear-gradient(180deg, #ffe27a 0%, #ffb52e 100%) !important;
+  color: #6b3a00 !important;
   border-radius: 999px;
   box-shadow: 0 2px 6px rgba(255, 170, 50, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -632,12 +692,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cy-chat .cy-chat-b,
+  .cy-chat .cy-chat-w,
   .cy-chat .cy-chat-t,
   .cy-chat .cy-chat-tn,
   .cy-chat .cy-chat-n,
   .cy-chat .cy-chat-l > li,
   .cy-chat .cy-chat-l > li:last-child,
-  .cy-chat .cy-chat-l > li[class*="-ping"],
+  .cy-chat .cy-chat-l > li[class$="-ping"],
+  .cy-chat .cy-chat-l > li.ping,
   .cy-chat [class$="-chat-tp"],
   .cy-chat [class$="-chat-pn"] {
     animation: none !important;

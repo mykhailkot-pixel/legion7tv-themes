@@ -71,15 +71,18 @@
     var(--fbn-i-paw) 80% 80%/34px no-repeat;
 
   font-family:"Nunito","Quicksand","Comfortaa","Segoe UI",system-ui,sans-serif;
-  color:var(--fbn-ink);
+
+  /* Явные непрозрачные фон и текст корневого контейнера */
+  background-color:#fff0f8!important;
+  color:#4a2f5e!important;
 }
 .cy-chat [hidden]{display:none!important}
 
-/* ===== Кнопка сворачивания ===== */
+/* ===== Кнопка сворачивания («−») ===== */
 .cy-chat .cy-chat-t{
-  background:var(--fbn-grad);
-  color:#3d2650;
-  border:1px solid #fff;
+  background:linear-gradient(135deg,#ff8fcf,#b8e4ff)!important;
+  color:#3d2650!important;
+  border:1px solid #ffffff!important;
   border-radius:999px;
   box-shadow:var(--fbn-glow);
   font-weight:800;
@@ -87,9 +90,27 @@
   cursor:pointer;
   transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
 }
-.cy-chat .cy-chat-t:hover{transform:scale(1.04);box-shadow:var(--fbn-glow),0 0 26px rgba(255,143,207,.6)}
-.cy-chat .cy-chat-t:active{transform:scale(.96);filter:brightness(.97)}
-.cy-chat .cy-chat-t:focus-visible{outline:2px solid var(--fbn-ink);outline-offset:2px}
+.cy-chat .cy-chat-t:hover{
+  background:linear-gradient(135deg,#ffa6d8,#cdeeff)!important;
+  color:#3d2650!important;
+  border-color:#ffffff!important;
+  transform:scale(1.04);
+  box-shadow:var(--fbn-glow),0 0 26px rgba(255,143,207,.6);
+}
+.cy-chat .cy-chat-t:active{
+  background:linear-gradient(135deg,#ff7fc4,#a8d9f7)!important;
+  color:#2e1a3f!important;
+  border-color:#ffe3f1!important;
+  transform:scale(.96);
+  filter:brightness(.97);
+}
+.cy-chat .cy-chat-t:focus-visible{
+  background:linear-gradient(135deg,#ffa6d8,#cdeeff)!important;
+  color:#3d2650!important;
+  border-color:#4a2f5e!important;
+  outline:2px solid var(--fbn-ink);
+  outline-offset:2px;
+}
 .cy-chat .cy-chat-t:disabled{opacity:.55;cursor:default;box-shadow:none;filter:grayscale(.4)}
 .cy-chat:not(.open) .cy-chat-t{box-shadow:var(--fbn-glow),0 0 24px rgba(255,143,207,.55)}
 
@@ -97,14 +118,22 @@
 .cy-chat .cy-chat-b{
   border:3px solid transparent;
   border-radius:24px;
-  background:
-    linear-gradient(160deg,var(--fbn-pink) 0%,var(--fbn-lav) 55%,var(--fbn-blue) 100%) padding-box,
-    var(--fbn-trans) border-box;
+  background-color:#f4e6ff!important;
+  background-image:
+    linear-gradient(160deg,#ffd1e8 0%,#dcc8ff 55%,#b8e4ff 100%),
+    linear-gradient(90deg,#5bcefa 0%,#f5a9b8 25%,#ffffff 50%,#f5a9b8 75%,#5bcefa 100%)!important;
+  background-origin:padding-box,border-box;
+  background-clip:padding-box,border-box;
   box-shadow:0 10px 32px rgba(255,143,207,.35),0 0 30px rgba(184,228,255,.5);
-  color:var(--fbn-ink);
+  color:#4a2f5e!important;
   overflow:visible;
 }
-.cy-chat .cy-chat-w{background:transparent}
+.cy-chat .cy-chat-w{
+  background-color:#f4e6ff!important;
+  background-image:linear-gradient(160deg,#ffd1e8 0%,#dcc8ff 55%,#b8e4ff 100%)!important;
+  border-radius:21px;
+  color:#4a2f5e!important;
+}
 .cy-chat .cy-chat-b::before,
 .cy-chat .cy-chat-b::after{
   content:"";
@@ -194,7 +223,7 @@
   pointer-events:none;
 }
 
-/* ===== Счётчики ===== */
+/* ===== Счётчики новых сообщений ===== */
 .cy-chat .cy-chat-tn,
 .cy-chat .cy-chat-n{
   background:linear-gradient(135deg,#9b7ae0,var(--fbn-violet));
@@ -203,24 +232,25 @@
   border-radius:999px;
   box-shadow:0 0 8px rgba(122,85,196,.55);
 }
+
+/* ===== Счётчики пингов ===== */
 .cy-chat [class$="-chat-tp"]{
-  background:linear-gradient(135deg,#ff6fae,var(--fbn-rose));
-  color:#fff;
-  border:1px solid #fff;
+  background:linear-gradient(135deg,#ff6fae,#c23077)!important;
+  color:#ffffff!important;
+  border:1px solid #ffffff!important;
   border-radius:999px;
   box-shadow:0 0 0 2px rgba(255,143,207,.5),0 0 10px rgba(194,48,119,.55);
 }
 .cy-chat [class$="-chat-pn"]{
-  background:linear-gradient(135deg,#ff4f9a,#a8206a);
-  color:#fff;
-  border:2px solid #fff;
+  background:linear-gradient(135deg,#ff4f9a,#a8206a)!important;
+  color:#ffffff!important;
+  border:2px solid #ffffff!important;
   border-radius:999px;
   box-shadow:0 0 0 2px rgba(255,79,154,.55),0 0 14px rgba(255,79,154,.75);
 }
 
-/* ===== Кнопки заголовка и смайлов ===== */
+/* ===== Кнопки заголовка (sh) и смайлов ===== */
 .cy-chat .cy-chat-sh,
-.cy-chat .cy-chat-x,
 .cy-chat .cy-emo-b{
   background:linear-gradient(180deg,#fff,var(--fbn-cream));
   color:var(--fbn-ink);
@@ -232,18 +262,46 @@
 }
 .cy-chat .cy-emo-b{color:var(--fbn-rose)}
 .cy-chat .cy-chat-sh:hover,
-.cy-chat .cy-chat-x:hover,
 .cy-chat .cy-emo-b:hover{transform:scale(1.1) rotate(8deg);box-shadow:0 0 12px rgba(255,143,207,.65)}
 .cy-chat .cy-chat-sh:active,
-.cy-chat .cy-chat-x:active,
 .cy-chat .cy-emo-b:active{transform:scale(.92);background:linear-gradient(180deg,#ffe3f1,#f1e6ff)}
 .cy-chat .cy-chat-sh:focus-visible,
-.cy-chat .cy-chat-x:focus-visible,
 .cy-chat .cy-emo-b:focus-visible{outline:2px solid var(--fbn-ink);outline-offset:2px}
 .cy-chat .cy-chat-sh:disabled,
-.cy-chat .cy-chat-x:disabled,
 .cy-chat .cy-emo-b:disabled{opacity:.5;cursor:default;box-shadow:none}
 .cy-chat .cy-chat-sh[aria-pressed="true"]{background:var(--fbn-grad);box-shadow:0 0 0 2px var(--fbn-hot)}
+
+/* ===== Кнопка закрытия ===== */
+.cy-chat .cy-chat-x{
+  background:linear-gradient(180deg,#ffffff,#fff8fc)!important;
+  color:#c23077!important;
+  border:1px solid rgba(255,143,207,.7)!important;
+  border-radius:50%;
+  box-shadow:0 2px 6px rgba(255,143,207,.3);
+  cursor:pointer;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.cy-chat .cy-chat-x:hover{
+  background:linear-gradient(180deg,#ffe3f1,#ffd1e8)!important;
+  color:#a02b68!important;
+  border-color:#ff8fcf!important;
+  transform:scale(1.1) rotate(8deg);
+  box-shadow:0 0 12px rgba(255,143,207,.65);
+}
+.cy-chat .cy-chat-x:active{
+  background:linear-gradient(180deg,#ffc2dd,#f1e6ff)!important;
+  color:#8a1f58!important;
+  border-color:#ff6fae!important;
+  transform:scale(.92);
+}
+.cy-chat .cy-chat-x:focus-visible{
+  background:linear-gradient(180deg,#ffe3f1,#ffd1e8)!important;
+  color:#a02b68!important;
+  border-color:#4a2f5e!important;
+  outline:2px solid var(--fbn-ink);
+  outline-offset:2px;
+}
+.cy-chat .cy-chat-x:disabled{opacity:.5;cursor:default;box-shadow:none}
 
 /* ===== Фильтр пингов и навигация ===== */
 .cy-chat [class$="-chat-filter"]{
@@ -458,10 +516,10 @@
 .cy-chat .cy-emo{filter:drop-shadow(0 1px 2px rgba(255,143,207,.45))}
 .cy-chat [class$="-native-emote-frame"]{border-radius:8px}
 
-/* ===== Упоминания ===== */
-.cy-chat [class*="-mention"]{
+/* ===== Текст упоминания ===== */
+.cy-chat [class$="-mention"]{
   color:#7a1650!important;
-  background:linear-gradient(180deg,#fff,#ffdcee)!important;
+  background:linear-gradient(180deg,#ffffff,#ffdcee)!important;
   border-radius:999px;
   padding:0 7px;
   font-weight:800;
@@ -469,26 +527,30 @@
   text-shadow:none;
 }
 
-/* ===== ПИНГ: вся строка ===== */
-.cy-chat .cy-chat-l > li[class*="-ping"],
+/* ===== ПИНГ: вся строка (фон и акцент) ===== */
+.cy-chat .cy-chat-l > li[class$="-ping"],
 .cy-chat .cy-chat-l > li.ping{
   --b:#ffd6ea;
   --sticker:var(--fbn-i-letter);
-  background:
-    linear-gradient(135deg,#ffd6ea,#e9dcff) padding-box,
-    var(--fbn-trans) border-box;
+  background-color:#ffd6ea!important;
+  background-image:
+    linear-gradient(135deg,#ffd6ea,#e9dcff),
+    linear-gradient(90deg,#5bcefa 0%,#f5a9b8 25%,#ffffff 50%,#f5a9b8 75%,#5bcefa 100%)!important;
+  background-origin:padding-box,border-box;
+  background-clip:padding-box,border-box;
   border:2px solid transparent;
   border-radius:18px 18px 18px 6px;
   padding:4px 11px;
   outline:1px dashed rgba(255,255,255,.95);
   outline-offset:-5px;
-  color:#3d1b4f;
+  color:#3d1b4f!important;
+  /* box-shadow без !important — им управляет анимация fbn-ping-in */
   box-shadow:0 0 14px rgba(255,111,174,.45),0 2px 8px rgba(255,143,207,.35);
   animation:fbn-ping-in 1.4s ease 2;
 }
-.cy-chat .cy-chat-l > li[class*="-ping"] > span,
+.cy-chat .cy-chat-l > li[class$="-ping"] > span,
 .cy-chat .cy-chat-l > li.ping > span{color:#3d1b4f}
-.cy-chat .cy-chat-l > li[class*="-ping"]::before,
+.cy-chat .cy-chat-l > li[class$="-ping"]::before,
 .cy-chat .cy-chat-l > li.ping::before{
   top:-10px;
   right:10px;
@@ -496,12 +558,12 @@
   height:22px;
   filter:drop-shadow(0 2px 3px rgba(255,111,174,.7));
 }
-.cy-chat .cy-chat-l > li[class*="-ping"]:hover,
+.cy-chat .cy-chat-l > li[class$="-ping"]:hover,
 .cy-chat .cy-chat-l > li.ping:hover{box-shadow:0 0 24px rgba(255,111,174,.8),0 3px 12px rgba(255,143,207,.45)}
 /* ПИНГ: упоминание внутри строки */
-.cy-chat .cy-chat-l > li[class*="-ping"] [class*="-mention"],
-.cy-chat .cy-chat-l > li.ping [class*="-mention"]{
-  color:#fff!important;
+.cy-chat .cy-chat-l > li[class$="-ping"] [class$="-mention"],
+.cy-chat .cy-chat-l > li.ping [class$="-mention"]{
+  color:#ffffff!important;
   background:linear-gradient(135deg,#d6407f,#9b4fd0)!important;
   box-shadow:0 0 0 1px #fff,0 0 10px rgba(214,64,127,.65);
   text-shadow:0 1px 1px rgba(60,10,50,.4);
@@ -733,6 +795,7 @@
     --fbn-deco-dm:var(--fbn-i-sakura) right 6px top 6px/40px no-repeat;
   }
   .cy-chat .cy-chat-b{border-radius:20px}
+  .cy-chat .cy-chat-w{border-radius:17px}
   .cy-chat .cy-chat-h{border-radius:16px 16px 0 0}
   .cy-chat form.cy-chat-f{border-radius:0 0 18px 18px}
   .cy-chat .cy-chat-l > li{margin:6px 6px 6px 12px;padding:4px 10px}
@@ -743,7 +806,7 @@
 /* ===== Уменьшенная анимация ===== */
 @media (prefers-reduced-motion:reduce){
   .cy-chat .cy-chat-l > li:last-child,
-  .cy-chat .cy-chat-l > li[class*="-ping"],
+  .cy-chat .cy-chat-l > li[class$="-ping"],
   .cy-chat .cy-chat-l > li.ping,
   .cy-chat form.cy-chat-f > span[class$="-chat-buttons"] > button[type="submit"]:active,
   .cy-chat form.dm-f > span[class$="-chat-buttons"] > button[type="submit"]:active,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-25T14:58:44+01:00",
+  "updatedAt": "2026-11-25T15:29:06+01:00",
   "themes": [
     {
       "id": "clouds",
@@ -14,17 +14,6 @@
       "license": "MIT",
       "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/style.css",
       "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/clouds/preview.png"
-    },
-    {
-      "id": "neon1",
-      "name": "neon1",
-      "author": "proctio_fliy",
-      "version": "1.0.0",
-      "description": "",
-      "tags": [],
-      "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/neon1/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/neon1/preview.png"
     },
     {
       "id": "femboy1",
@@ -63,17 +52,6 @@
       "license": "MIT",
       "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/style.css",
       "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/cats/preview.png"
-    },
-    {
-      "id": "lsd",
-      "name": "LSD",
-      "author": "procto_fliy",
-      "version": "1.0.0",
-      "description": "",
-      "tags": [],
-      "license": "MIT",
-      "css": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/lsd/style.css",
-      "preview": "https://cdn.jsdelivr.net/gh/mykhailkot-pixel/Legion7TV-themes@main/themes/lsd/preview.png"
     },
     {
       "id": "old-dark",
